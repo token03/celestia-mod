@@ -1,0 +1,3 @@
+displayName = Celestia
+author = token
+version = 0.1
