@@ -1,6 +1,7 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Celestia.Content.Buffs.Elements;
 
 namespace Celestia.Content.Items
 {
@@ -26,6 +27,11 @@ namespace Celestia.Content.Items
             Item.rare = 2;
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;
+        }
+
+        public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
+        {
+            target.AddBuff(ModContent.BuffType<ElectroDebuff>(), 180, false);
         }
 
         public override void AddRecipes()
