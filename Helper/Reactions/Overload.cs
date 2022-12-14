@@ -10,6 +10,7 @@ namespace Celestia.Helper.Reactions
 {
     public static class Overload
     {
+        private const int BASE_DAMAGE = 20;
         public static void applyOverload(NPC npc, int em)
         {
             int damage = damageCalc(npc, em);
@@ -20,7 +21,8 @@ namespace Celestia.Helper.Reactions
 
         public static int damageCalc(NPC npc, int em)
         {
-            return 100;
+            double damage = BASE_DAMAGE * MathHelper.GetRandomNumber(0.85, 1.15);
+            return Convert.ToInt32(damage);
         }
     }
 }
