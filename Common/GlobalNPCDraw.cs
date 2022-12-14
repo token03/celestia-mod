@@ -1,5 +1,6 @@
 ﻿using Celestia.Content.Buffs.Elements;
 using Microsoft.Xna.Framework;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -17,13 +18,17 @@ namespace Celestia.Common
             {
                 drawColor = Color.OrangeRed;
             }
-            else if (npc.HasBuff<Pyro>())
+            else if (npc.HasBuff<Hydro>())
             {
-                drawColor = Color.OrangeRed;
+                drawColor = Color.DeepSkyBlue;
             }
-            else if (npc.HasBuff<Pyro>())
+            else if (npc.HasBuff<Cryo>())
             {
-                drawColor = Color.OrangeRed;
+                drawColor = Color.LightCyan;
+            }
+            else if (npc.HasBuff<Dendro>())
+            {
+                drawColor = Color.SpringGreen;
             }
         }
     }

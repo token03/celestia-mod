@@ -13,12 +13,13 @@ namespace Celestia.Helper.Reactions
         private const int BASE_DAMAGE = 20; 
         public static void applyOverload(NPC npc, int em)
         {
-            int damage = damageCalc(npc, em); // Calcs the damage
+            int damage = damageCalc(em); // Calcs the damage
             CombatText.NewText(npc.Hitbox, Color.MediumPurple, damage, true, false); // Prints little number
             npc.life -= damage; // Deals the damage
+            npc.netUpdate = true;
         }
 
-        public static int damageCalc(NPC npc, int em)
+        public static int damageCalc(int em)
         {
             double damage = BASE_DAMAGE * MathHelper.GetRandomNumber(0.85, 1.15);
             return Convert.ToInt32(damage);

@@ -6,7 +6,7 @@ using Celestia.Helper;
 
 namespace Celestia.Content.Items
 {
-    public class Sword2 : ModItem
+    public class HydroSword : ModItem
     {
         public override void SetStaticDefaults()
         {
@@ -32,10 +32,9 @@ namespace Celestia.Content.Items
 
         public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
         {
-            if(!ReactionHelper.pyroDetect(target, player, damage))
+            if(!ReactionHelper.hydroDetect(target, player, damage))
             {
-                Main.NewText("applying pyro!");
-                target.AddBuff(ModContent.BuffType<Pyro>(), 1800);
+                target.AddBuff(ModContent.BuffType<Hydro>(), 1800);
             }
         }
 

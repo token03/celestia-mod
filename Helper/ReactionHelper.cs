@@ -103,7 +103,10 @@ namespace Celestia.Helper
             }
             else if (target.HasBuff<Cryo>())
             {
-                // melt 2x
+                // melt 2x            
+                Main.NewText("BOOM! pyro on cryo");
+                Melt.applyMelt(target, 1, damage, false);
+                target.DelBuff(target.FindBuffIndex(ModContent.BuffType<Cryo>()));
                 return true;
             }
             else if (target.HasBuff<Dendro>())
@@ -127,7 +130,10 @@ namespace Celestia.Helper
         {
             if (target.HasBuff<Pyro>())
             {
-                // melt 1.5x
+                // melt 1.5x      
+                Main.NewText("BOOM! cryo on pyro");
+                Melt.applyMelt(target, 1, damage, true);
+                target.DelBuff(target.FindBuffIndex(ModContent.BuffType<Pyro>()));
                 return true;
             }
             else if (target.HasBuff<Hydro>())

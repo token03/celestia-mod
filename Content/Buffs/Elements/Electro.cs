@@ -20,7 +20,7 @@ namespace Celestia.Content.Buffs.Elements
             BuffID.Sets.LongerExpertDebuff[Type] = true; // If this buff is a debuff, setting this to true will make this buff last twice as long on players in expert mode
             BuffID.Sets.IsAnNPCWhipDebuff[Type] = true;
         }
-
+        /*
         // Allows you to make this buff give certain effects to the given player
         public override void Update(NPC npc, ref int buffIndex)
         {
@@ -49,5 +49,6 @@ namespace Celestia.Content.Buffs.Elements
                 electroApplied = false;
             }
         }
+        */
     }
 }
