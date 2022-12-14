@@ -15,7 +15,7 @@ namespace Celestia.Helper
                 // overload
                 Main.NewText("BOOM! electron on pyro");
                 target.GetGlobalNPC<OverloadNPC>().applyOverload(target, damage);
-                target.RequestBuffRemoval(ModContent.BuffType<Pyro>());
+                target.DelBuff(target.FindBuffIndex(ModContent.BuffType<Pyro>()));
                 return true;
             } 
             else if (target.HasBuff<Hydro>())
@@ -76,7 +76,7 @@ namespace Celestia.Helper
                 // overload
                 Main.NewText("BOOM (pyro on electro)!");
                 target.GetGlobalNPC<OverloadNPC>().applyOverload(target, damage);
-                target.RequestBuffRemoval(ModContent.BuffType<Electro>());
+                target.DelBuff(target.FindBuffIndex(ModContent.BuffType<Electro>()));
                 return true;
             }
             else if (target.HasBuff<Hydro>())
