@@ -1,5 +1,6 @@
 ﻿using Celestia.Content.Buffs.Elements;
 using Terraria;
+using Terraria.ModLoader;
 
 namespace Celestia.Helper
 {
@@ -12,6 +13,9 @@ namespace Celestia.Helper
             if (target.HasBuff<Pyro>())
             {
                 // overload
+                Main.NewText("BOOM! electron on pyro");
+                target.GetGlobalNPC<OverloadNPC>().applyOverload(target, damage);
+                target.RequestBuffRemoval(ModContent.BuffType<Pyro>());
                 return true;
             } 
             else if (target.HasBuff<Hydro>())
@@ -65,126 +69,130 @@ namespace Celestia.Helper
             }
             return false;
         }
-        public static bool pyroDetect(NPC npc, Player player, int damage)
+        public static bool pyroDetect(NPC target, Player player, int damage)
         {
-            if (npc.HasBuff<Electro>())
+            if (target.HasBuff<Electro>())
             {
                 // overload
+                Main.NewText("BOOM (pyro on electro)!");
+                target.GetGlobalNPC<OverloadNPC>().applyOverload(target, damage);
+                target.RequestBuffRemoval(ModContent.BuffType<Electro>());
                 return true;
             }
-            else if (npc.HasBuff<Hydro>())
+            else if (target.HasBuff<Hydro>())
             {
                 // vaporize 1.5x
                 return true;
             }
-            else if (npc.HasBuff<Cryo>())
+            else if (target.HasBuff<Cryo>())
             {
                 // melt 2x
                 return true;
             }
-            else if (npc.HasBuff<Dendro>())
+            else if (target.HasBuff<Dendro>())
             {
                 // burning
                 return true;
             }
-            else if (npc.HasBuff<Anemo>())
+            else if (target.HasBuff<Anemo>())
             {
                 // swirl
                 return true;
             }
             return false;
         }
-        public static bool cryoDetect(NPC npc, Player player, int damage)
+        public static bool cryoDetect(NPC target, Player player, int damage)
         {
-            if (npc.HasBuff<Pyro>())
+            if (target.HasBuff<Pyro>())
             {
                 // melt 1.5x
                 return true;
                 return false;
             }
-            else if (npc.HasBuff<Hydro>())
+            else if (target.HasBuff<Hydro>())
             {
                 // frozen
                 return true;
             }
-            else if (npc.HasBuff<Electro>())
+            else if (target.HasBuff<Electro>())
             {
                 // superconduct
                 return true;
             }
-            else if (npc.HasBuff<Dendro>())
+            else if (target.HasBuff<Dendro>())
             {
                 // quicken
                 return true;
             }
-            else if (npc.HasBuff<Anemo>())
+            else if (target.HasBuff<Anemo>())
             {
                 // swirl
                 return true;
             }
             return false;
         }
-        public static bool dendroDetect(NPC npc, Player player, int damage)
+        public static bool dendroDetect(NPC target, Player player, int damage)
         {
-            if (npc.HasBuff<Pyro>())
+            if (target.HasBuff<Pyro>())
             {
                 // burning
                 return true;
             }
-            else if (npc.HasBuff<Hydro>())
+            else if (target.HasBuff<Hydro>())
             {
                 // bloom
                 return true;
             }
-            else if (npc.HasBuff<Electro>())
+            else if (target.HasBuff<Electro>())
             {
                 // quicken
                 return true;
             }
             return false;
         }
-        public static bool anemoDetect(NPC npc, Player player, int damage)
+        public static bool anemoDetect(NPC target, Player player, int damage)
         {
-            if (npc.HasBuff<Pyro>())
+            if (target.HasBuff<Pyro>())
             {
                 // swirl
                 return true;
             }
-            else if (npc.HasBuff<Hydro>())
+            else if (target.HasBuff<Hydro>())
             {
                 // swirl
                 return true;
             }
-            else if (npc.HasBuff<Cryo>())
+            else if (target.HasBuff<Cryo>())
             {
                 // swirl
                 return true;
             }
-            else if (npc.HasBuff<Dendro>())
+            else if (target.HasBuff<Dendro>())
             {
                 // swirl
                 return true;
             }
             return false;
         }
-        public static bool geoDetect(NPC npc, Player player, int damage)
+        public static bool geoDetect(NPC target, Player player, int damage)
         {
-            if (npc.HasBuff<Pyro>())
+            if (target.HasBuff<Pyro>())
+            {
+                // crystalize
+                Main.NewText("boof");
+                return true;
+            }
+            else if (target.HasBuff<Hydro>())
             {
                 // crystalize
                 return true;
             }
-            else if (npc.HasBuff<Hydro>())
+            else if (target.HasBuff<Cryo>())
             {
                 // crystalize
                 return true;
             }
-            else if (npc.HasBuff<Cryo>())
-            {
-                // crystalize
-                return true;
-            }
-            else if (npc.HasBuff<Dendro>())
+            else if (target.HasBuff<Dendro>())
             {
                 // crystalize
                 return true;

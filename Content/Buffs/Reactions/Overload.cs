@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using System;
 using Terraria;
 using Terraria.Graphics.Renderers;
 using Terraria.ID;
@@ -15,6 +16,15 @@ namespace Celestia.Content.Buffs.Elements
 
         public bool overload;
         public int overloadDamage;
+
+        public void applyOverload(NPC npc, int em)
+        {
+            overloadDamage = 100;
+            //Damage text above player's head for visibility
+            AdvancedPopupRequest popup = new AdvancedPopupRequest { Text = overloadDamage.ToString(), Color = Color.Purple, DurationInFrames = 180, Velocity = new Vector2(0f, 1f) };
+            PopupText.NewText(popup, npc.Center + new Vector2(0, -70));
+            npc.life -= overloadDamage;
+        }
 
         public override void ResetEffects(NPC npc)
         {
