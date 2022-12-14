@@ -1,4 +1,5 @@
 ﻿using Celestia.Content.Buffs.Elements;
+using Celestia.Helper.Reactions;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -6,15 +7,15 @@ namespace Celestia.Helper
 {
     public static class ReactionHelper
     {
-        // Each respective detector is called based on elemental application (i.e ElementBuff calls elementDetect).
-        // If another element is detected, remove both elements and apply respective reaction to target NPC
+        // Each respective detector is called based on elemental application (i.e Applying element calls elementDetect).
+        // If another element is detected apply respective reaction to target NPC and remove base element.
         public static bool electroDetect(NPC target, Player player, int damage)
         {
             if (target.HasBuff<Pyro>())
             {
                 // overload
                 Main.NewText("BOOM! electron on pyro");
-                target.GetGlobalNPC<OverloadNPC>().applyOverload(target, damage); // THIS IS COMPLTELY UNESSECARY ATM, CONSIDER CHANGING/
+                Overload.applyOverload(target, damage);
                 target.DelBuff(target.FindBuffIndex(ModContent.BuffType<Pyro>())); 
                 return true;
             } 
@@ -75,7 +76,7 @@ namespace Celestia.Helper
             {
                 // overload
                 Main.NewText("BOOM (pyro on electro)!");
-                target.GetGlobalNPC<OverloadNPC>().applyOverload(target, damage); // THIS IS COMPLTELY UNESSECARY ATM, CONSIDER CHANGING/
+                Overload.applyOverload(target, damage);
                 target.DelBuff(target.FindBuffIndex(ModContent.BuffType<Electro>()));
                 return true;
             }
