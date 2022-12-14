@@ -1,4 +1,5 @@
 ﻿using Celestia.Content.Buffs.Elements;
+using Celestia.Content.Buffs.Reactions;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using Terraria;
@@ -10,7 +11,11 @@ namespace Celestia.Common
     {
         public override void DrawEffects(NPC npc, ref Color drawColor)
         {
-            if (npc.HasBuff<Electro>())
+            if (npc.HasBuff<Superconduct>())
+            {
+                drawColor = Color.GhostWhite;
+            }
+            else if (npc.HasBuff<Electro>())
             {
                 drawColor = Color.Purple;
             } 

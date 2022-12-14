@@ -1,4 +1,5 @@
 ﻿using Celestia.Content.Buffs.Elements;
+using Celestia.Content.Buffs.Reactions;
 using Celestia.Helper.Reactions;
 using Terraria;
 using Terraria.ModLoader;
@@ -27,6 +28,9 @@ namespace Celestia.Helper
             else if (target.HasBuff<Cryo>())
             {
                 // superconduct
+                Main.NewText("BOOM! electron on cryo"); // for debuging purposes
+                target.AddBuff(ModContent.BuffType<Superconduct>(), 480); // applies debuff 
+                target.DelBuff(target.FindBuffIndex(ModContent.BuffType<Cryo>())); // removes debuff
                 return true;
             } 
             else if (target.HasBuff<Dendro>())
@@ -42,6 +46,11 @@ namespace Celestia.Helper
             else if (target.HasBuff<Geo>())
             {
                 // crystalize
+                return true;
+            }
+            else if (target.HasBuff<Quicken>())
+            {
+                // aggravate
                 return true;
             }
             return false;
@@ -144,6 +153,11 @@ namespace Celestia.Helper
             else if (target.HasBuff<Electro>())
             {
                 // superconduct
+                Main.NewText("BOOM! cryo on electro"); // for debuging purposes
+                target.AddBuff(ModContent.BuffType<Superconduct>(), 480); // applies debuff 
+                target.DelBuff(target.FindBuffIndex(ModContent.BuffType<Electro>())); // removes debuff
+                return true;
+
                 return true;
             }
             else if (target.HasBuff<Dendro>())
@@ -177,6 +191,11 @@ namespace Celestia.Helper
             else if (target.HasBuff<Electro>())
             {
                 // quicken
+                return true;
+            }
+            else if (target.HasBuff<Quicken>())
+            {
+                // spread
                 return true;
             }
             return false;
