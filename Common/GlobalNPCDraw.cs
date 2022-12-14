@@ -17,6 +17,14 @@ namespace Celestia.Common
             {
                 drawColor = Color.OrangeRed;
             }
+            else if (npc.HasBuff<Pyro>())
+            {
+                drawColor = Color.OrangeRed;
+            }
+            else if (npc.HasBuff<Pyro>())
+            {
+                drawColor = Color.OrangeRed;
+            }
         }
     }
 }

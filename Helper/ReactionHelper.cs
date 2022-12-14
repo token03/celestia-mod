@@ -14,10 +14,10 @@ namespace Celestia.Helper
             if (target.HasBuff<Pyro>())
             {
                 // overload
-                Main.NewText("BOOM! electron on pyro");
-                Overload.applyOverload(target, damage);
-                target.DelBuff(target.FindBuffIndex(ModContent.BuffType<Pyro>())); 
-                return true;
+                Main.NewText("BOOM! electron on pyro"); // for debuging purposes
+                Overload.applyOverload(target, 1); // applies debuff 
+                target.DelBuff(target.FindBuffIndex(ModContent.BuffType<Pyro>())); // removes debuff
+                return true; // returns true so the call can know not to apply base element
             } 
             else if (target.HasBuff<Hydro>())
             {
@@ -39,33 +39,46 @@ namespace Celestia.Helper
                 // swirl
                 return true;
             }
-            return false;
-        }
-        public static bool hydroDetect(NPC npc, Player player, int damage)
-        {
-            if (npc.HasBuff<Pyro>())
+            else if (target.HasBuff<Geo>())
             {
-                // vaporize 2x
+                // crystalize
                 return true;
             }
-            else if (npc.HasBuff<Electro>())
+            return false;
+        }
+        public static bool hydroDetect(NPC target, Player player, int damage)
+        {
+            if (target.HasBuff<Pyro>())
+            {
+                // vaporize 2x
+                Main.NewText("BOOM! hydro on pyro");
+                Vaporize.applyVaporize(target, 1, damage, false);
+                target.DelBuff(target.FindBuffIndex(ModContent.BuffType<Pyro>()));
+                return true;
+            }
+            else if (target.HasBuff<Electro>())
             {
                 // electrocharged
                 return true;
             }
-            else if (npc.HasBuff<Cryo>())
+            else if (target.HasBuff<Cryo>())
             {
                 // frozen
                 return true;
             }
-            else if (npc.HasBuff<Dendro>())
+            else if (target.HasBuff<Dendro>())
             {
                 // bloom
                 return true;
             }
-            else if (npc.HasBuff<Anemo>())
+            else if (target.HasBuff<Anemo>())
             {
                 // swirl
+                return true;
+            }
+            else if (target.HasBuff<Geo>())
+            {
+                // crystalize
                 return true;
             }
             return false;
@@ -75,7 +88,7 @@ namespace Celestia.Helper
             if (target.HasBuff<Electro>())
             {
                 // overload
-                Main.NewText("BOOM (pyro on electro)!");
+                Main.NewText("BOOM (pyro on electro)!"); // 
                 Overload.applyOverload(target, damage);
                 target.DelBuff(target.FindBuffIndex(ModContent.BuffType<Electro>()));
                 return true;
@@ -83,6 +96,9 @@ namespace Celestia.Helper
             else if (target.HasBuff<Hydro>())
             {
                 // vaporize 1.5x
+                Main.NewText("BOOM! pyro on hydro");
+                Vaporize.applyVaporize(target, 1, damage, true);
+                target.DelBuff(target.FindBuffIndex(ModContent.BuffType<Hydro>()));
                 return true;
             }
             else if (target.HasBuff<Cryo>())
@@ -100,6 +116,11 @@ namespace Celestia.Helper
                 // swirl
                 return true;
             }
+            else if (target.HasBuff<Geo>())
+            {
+                // crystalize
+                return true;
+            }
             return false;
         }
         public static bool cryoDetect(NPC target, Player player, int damage)
@@ -108,7 +129,6 @@ namespace Celestia.Helper
             {
                 // melt 1.5x
                 return true;
-                return false;
             }
             else if (target.HasBuff<Hydro>())
             {
@@ -128,6 +148,10 @@ namespace Celestia.Helper
             else if (target.HasBuff<Anemo>())
             {
                 // swirl
+                return true;
+            }
+            else if (target.HasBuff<Geo>())
+            {
                 return true;
             }
             return false;
