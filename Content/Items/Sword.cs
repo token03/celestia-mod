@@ -2,10 +2,11 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Celestia.Content.Buffs.Elements;
+using Celestia.Helper;
 
 namespace Celestia.Content.Items
 {
-    public class a : ModItem
+    public class Sword : ModItem
     {
         public override void SetStaticDefaults()
         {
@@ -31,7 +32,10 @@ namespace Celestia.Content.Items
 
         public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
         {
-            target.AddBuff(ModContent.BuffType<ElectroDebuff>(), 180, false);
+            if(!ReactionHelper.electroDetect(target, player, damage))
+            {
+                target.AddBuff(ModContent.BuffType<Electro>(), 30);
+            }
         }
 
         public override void AddRecipes()

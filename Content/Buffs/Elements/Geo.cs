@@ -8,7 +8,7 @@ namespace Celestia.Content.Buffs.Elements
 {
     // This class serves as an example of a debuff that causes constant loss of life
     // See ExampleLifeRegenDebuffPlayer.UpdateBadLifeRegen at the end of the file for more information
-    public class AnemoDebuff : ModBuff
+    public class Geo : ModBuff
     {
         public override void SetStaticDefaults()
         {
