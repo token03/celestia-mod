@@ -51,6 +51,8 @@ namespace Celestia.Helper
             else if (target.HasBuff<Quicken>())
             {
                 // aggravate
+                Main.NewText("BOOM! aggravate"); // for debuging purposes
+                Aggravate.applyAggravate(target, 1, damage); // applies debuff
                 return true;
             }
             return false;
@@ -88,6 +90,11 @@ namespace Celestia.Helper
             else if (target.HasBuff<Geo>())
             {
                 // crystalize
+                return true;
+            }
+            else if (target.HasBuff<Quicken>())
+            {
+                // bloom 
                 return true;
             }
             return false;
@@ -131,6 +138,11 @@ namespace Celestia.Helper
             else if (target.HasBuff<Geo>())
             {
                 // crystalize
+                return true;
+            }
+            else if (target.HasBuff<Quicken>())
+            {
+                // burning
                 return true;
             }
             return false;
@@ -196,6 +208,8 @@ namespace Celestia.Helper
             else if (target.HasBuff<Quicken>())
             {
                 // spread
+                Main.NewText("BOOM! spread"); // for debuging purposes
+                Spread.applySpread(target, 1, damage); // applies debuff
                 return true;
             }
             return false;
