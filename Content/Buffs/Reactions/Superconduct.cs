@@ -39,7 +39,7 @@ namespace Celestia.Content.Buffs.Reactions
             {
                 if(superconduct)
                 {
-                    npc.defense *= Convert.ToInt32(defense * .2);
+                    npc.defense *= Convert.ToInt32(defense * .6);
                 }
                 return true;
             }
