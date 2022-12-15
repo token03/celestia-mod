@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace Celestia.Common
+namespace Celestia.Common.GlobalNPCs
 {
     public class GlobalNPCDraw : GlobalNPC
     {
@@ -18,7 +18,7 @@ namespace Celestia.Common
             else if (npc.HasBuff<Electro>())
             {
                 drawColor = Color.Purple;
-            } 
+            }
             else if (npc.HasBuff<Pyro>())
             {
                 drawColor = Color.OrangeRed;

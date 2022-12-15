@@ -21,7 +21,7 @@ namespace Celestia.Helper.Reactions
 
         public static int damageCalc(int em)
         {
-            double damage = BASE_DAMAGE * MathHelper.GetRandomNumber(0.85, 1.15);
+            double damage = em/10 * MathHelper.GetRandomNumber(0.85, 1.15);
             return Convert.ToInt32(damage);
         }
     }

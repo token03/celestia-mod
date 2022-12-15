@@ -4,9 +4,9 @@ using Terraria.ModLoader;
 using Celestia.Content.Buffs.Elements;
 using Celestia.Helper;
 
-namespace Celestia.Content.Items
+namespace Celestia.Content.Items.Weapons
 {
-    public class ElectroSword : ModItem
+    public class CryoSword : ModItem
     {
         public override void SetStaticDefaults()
         {
@@ -32,9 +32,9 @@ namespace Celestia.Content.Items
 
         public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
         {
-            if(!ReactionHelper.electroDetect(target, player, damage))
+            if (!ReactionHelper.cryoDetect(target, player, damage))
             {
-                target.AddBuff(ModContent.BuffType<Electro>(), 1800);
+                target.AddBuff(ModContent.BuffType<Cryo>(), 1800);
             }
         }
 

@@ -1,4 +1,5 @@
-﻿using Celestia.Content.Buffs.Elements;
+﻿using Celestia.Common.Players;
+using Celestia.Content.Buffs.Elements;
 using Celestia.Content.Buffs.Reactions;
 using Celestia.Helper.Reactions;
 using Terraria;
@@ -12,13 +13,14 @@ namespace Celestia.Helper
         // If another element is detected apply respective reaction to target NPC and remove base element.
         public static bool electroDetect(NPC target, Player player, int damage)
         {
+            int em = player.GetModPlayer<EMPlayer>().elementalMastery;
             if (target.HasBuff<Pyro>())
             {
                 // overload
                 Main.NewText("BOOM! electron on pyro"); // for debuging purposes
-                Overload.applyOverload(target, 1); // applies debuff 
+                Overload.applyOverload(target, em); // applies debuff 
                 target.DelBuff(target.FindBuffIndex(ModContent.BuffType<Pyro>())); // removes debuff
-                return true; // returns true so the call can know not to apply base element
+                return true; // returns true so the orginal call can know not to apply base element
             } 
             else if (target.HasBuff<Hydro>())
             {
@@ -59,6 +61,7 @@ namespace Celestia.Helper
         }
         public static bool hydroDetect(NPC target, Player player, int damage)
         {
+            int em = player.GetModPlayer<EMPlayer>().elementalMastery;
             if (target.HasBuff<Pyro>())
             {
                 // vaporize 2x
@@ -101,11 +104,12 @@ namespace Celestia.Helper
         }
         public static bool pyroDetect(NPC target, Player player, int damage)
         {
+            int em = player.GetModPlayer<EMPlayer>().elementalMastery;
             if (target.HasBuff<Electro>())
             {
                 // overload
                 Main.NewText("BOOM (pyro on electro)!"); // 
-                Overload.applyOverload(target, damage);
+                Overload.applyOverload(target, em);
                 target.DelBuff(target.FindBuffIndex(ModContent.BuffType<Electro>()));
                 return true;
             }
@@ -149,6 +153,7 @@ namespace Celestia.Helper
         }
         public static bool cryoDetect(NPC target, Player player, int damage)
         {
+            int em = player.GetModPlayer<EMPlayer>().elementalMastery;
             if (target.HasBuff<Pyro>())
             {
                 // melt 1.5x      
@@ -169,8 +174,6 @@ namespace Celestia.Helper
                 target.AddBuff(ModContent.BuffType<Superconduct>(), 480); // applies debuff 
                 target.DelBuff(target.FindBuffIndex(ModContent.BuffType<Electro>())); // removes debuff
                 return true;
-
-                return true;
             }
             else if (target.HasBuff<Dendro>())
             {
@@ -184,12 +187,14 @@ namespace Celestia.Helper
             }
             else if (target.HasBuff<Geo>())
             {
+                // cryatlize
                 return true;
             }
             return false;
         }
         public static bool dendroDetect(NPC target, Player player, int damage)
         {
+            int em = player.GetModPlayer<EMPlayer>().elementalMastery;
             if (target.HasBuff<Pyro>())
             {
                 // burning
@@ -216,6 +221,7 @@ namespace Celestia.Helper
         }
         public static bool anemoDetect(NPC target, Player player, int damage)
         {
+            int em = player.GetModPlayer<EMPlayer>().elementalMastery;
             if (target.HasBuff<Pyro>())
             {
                 // swirl
@@ -240,10 +246,10 @@ namespace Celestia.Helper
         }
         public static bool geoDetect(NPC target, Player player, int damage)
         {
+            int em = player.GetModPlayer<EMPlayer>().elementalMastery;
             if (target.HasBuff<Pyro>())
             {
                 // crystalize
-                Main.NewText("boof");
                 return true;
             }
             else if (target.HasBuff<Hydro>())
@@ -258,7 +264,7 @@ namespace Celestia.Helper
             }
             else if (target.HasBuff<Dendro>())
             {
-                // crystalize
+                // crystalize 
                 return true;
             }
             return false;

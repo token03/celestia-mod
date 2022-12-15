@@ -4,9 +4,9 @@ using Terraria.ModLoader;
 using Celestia.Content.Buffs.Elements;
 using Celestia.Helper;
 
-namespace Celestia.Content.Items
+namespace Celestia.Content.Items.Weapons
 {
-    public class HydroSword : ModItem
+    public class DendroSword : ModItem
     {
         public override void SetStaticDefaults()
         {
@@ -32,9 +32,9 @@ namespace Celestia.Content.Items
 
         public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
         {
-            if(!ReactionHelper.hydroDetect(target, player, damage))
+            if (!ReactionHelper.dendroDetect(target, player, damage))
             {
-                target.AddBuff(ModContent.BuffType<Hydro>(), 1800);
+                target.AddBuff(ModContent.BuffType<Dendro>(), 1800);
             }
         }
 

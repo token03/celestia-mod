@@ -4,9 +4,9 @@ using Terraria.ModLoader;
 using Celestia.Content.Buffs.Elements;
 using Celestia.Helper;
 
-namespace Celestia.Content.Items
+namespace Celestia.Content.Items.Weapons
 {
-    public class DendroSword : ModItem
+    public class PyroSword : ModItem
     {
         public override void SetStaticDefaults()
         {
@@ -22,19 +22,19 @@ namespace Celestia.Content.Items
             Item.height = 40;
             Item.useTime = 20;
             Item.useAnimation = 20;
-            Item.useStyle = 1;
+            Item.useStyle = ItemUseStyleID.Swing;
             Item.knockBack = 6;
             Item.value = 10000;
-            Item.rare = 2;
+            Item.rare = ItemRarityID.Green;
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;
         }
 
         public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
         {
-            if(!ReactionHelper.dendroDetect(target, player, damage))
+            if (!ReactionHelper.pyroDetect(target, player, damage))
             {
-                target.AddBuff(ModContent.BuffType<Dendro>(), 1800);
+                target.AddBuff(ModContent.BuffType<Pyro>(), 1800);
             }
         }
 

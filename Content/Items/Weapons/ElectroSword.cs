@@ -4,9 +4,9 @@ using Terraria.ModLoader;
 using Celestia.Content.Buffs.Elements;
 using Celestia.Helper;
 
-namespace Celestia.Content.Items
+namespace Celestia.Content.Items.Weapons
 {
-    public class GeoSword : ModItem
+    public class ElectroSword : ModItem
     {
         public override void SetStaticDefaults()
         {
@@ -32,9 +32,9 @@ namespace Celestia.Content.Items
 
         public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
         {
-            if(!ReactionHelper.geoDetect(target, player, damage))
+            if (!ReactionHelper.electroDetect(target, player, damage)) // checks if a reactive element is not applied
             {
-                //dd
+                target.AddBuff(ModContent.BuffType<Electro>(), 1800); // if a reactive element is not applied, apply base element
             }
         }
 

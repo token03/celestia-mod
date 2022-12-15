@@ -4,9 +4,9 @@ using Terraria.ModLoader;
 using Celestia.Content.Buffs.Elements;
 using Celestia.Helper;
 
-namespace Celestia.Content.Items
+namespace Celestia.Content.Items.Weapons
 {
-    public class PyroSword : ModItem
+    public class GeoSword : ModItem
     {
         public override void SetStaticDefaults()
         {
@@ -22,19 +22,19 @@ namespace Celestia.Content.Items
             Item.height = 40;
             Item.useTime = 20;
             Item.useAnimation = 20;
-            Item.useStyle = ItemUseStyleID.Swing;
+            Item.useStyle = 1;
             Item.knockBack = 6;
             Item.value = 10000;
-            Item.rare = ItemRarityID.Green;
+            Item.rare = 2;
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;
         }
 
         public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
         {
-            if(!ReactionHelper.pyroDetect(target, player, damage))
+            if (!ReactionHelper.geoDetect(target, player, damage))
             {
-                target.AddBuff(ModContent.BuffType<Pyro>(), 1800);
+                //dd
             }
         }
 

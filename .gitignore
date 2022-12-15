@@ -413,3 +413,4 @@ FodyWeavers.xsd
 
 commit-message.txt
 *.sfk
+.editorconfig
