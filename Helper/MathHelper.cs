@@ -1,9 +1,11 @@
-﻿using IL.Terraria;
+﻿using Terraria;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Terraria.ID;
+using Microsoft.Xna.Framework;
 
 namespace Celestia.Helper
 {
@@ -19,6 +21,5 @@ namespace Celestia.Helper
         {
             return random.NextDouble() * (maximum - minimum) + minimum;
         }
-
     }
 }

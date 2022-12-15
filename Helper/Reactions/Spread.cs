@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Celestia.Common.Players;
+using Microsoft.Xna.Framework;
 using System;
 using Terraria;
 using Terraria.GameContent;
@@ -8,14 +9,14 @@ using Terraria.ModLoader;
 
 namespace Celestia.Helper.Reactions
 {
-    public static class Spread
+    public class Spread : InstantReaction
     {
-        public static void applySpread(NPC npc, int em, int baseDamage)
-        {
-            int damage = damageCalc(em, baseDamage); // Calculates damage
-            CombatText.NewText(npc.Hitbox, Color.ForestGreen, damage, true, false); // Prints the little number
-            npc.life -= damage; // Does the damage
-        }
+        public static void applySpread(NPC npc, Player player, int baseDamage)
+		{
+			int em = player.GetModPlayer<EMPlayer>().elementalMastery;
+			int damage = damageCalc(em, baseDamage); // Calculates damage
+			ApplyReactionDamage(npc, damage, Color.ForestGreen, player);
+		}
 
         public static int damageCalc(int em, int baseDamage)
         {

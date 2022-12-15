@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Celestia.Common.Players;
+using Microsoft.Xna.Framework;
 using System;
 using Terraria;
 using Terraria.GameContent;
@@ -8,13 +9,13 @@ using Terraria.ModLoader;
 
 namespace Celestia.Helper.Reactions
 {
-    public static class Vaporize
+    public class Vaporize : InstantReaction
     {
-        public static void applyVaporize(NPC npc, int em, int baseDamage, bool reverse)
-        {
-            int damage = damageCalc(em, baseDamage, reverse); // Calculates damage
-            CombatText.NewText(npc.Hitbox, Color.LightCyan, damage, true, false); // Prints the little number
-            npc.life -= damage; // Does the damage
+        public static void applyVaporize(NPC npc, Player player, int baseDamage, bool reverse)
+		{
+			int em = player.GetModPlayer<EMPlayer>().elementalMastery;
+			int damage = damageCalc(em, baseDamage, reverse); // Calculates damage
+			ApplyReactionDamage(npc, damage, Color.LightCyan, player);
         }
 
         public static int damageCalc(int em, int baseDamage, bool reverse)

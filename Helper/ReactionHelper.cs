@@ -13,12 +13,11 @@ namespace Celestia.Helper
         // If another element is detected apply respective reaction to target NPC and remove base element.
         public static bool electroDetect(NPC target, Player player, int damage)
         {
-            int em = player.GetModPlayer<EMPlayer>().elementalMastery;
             if (target.HasBuff<Pyro>())
             {
                 // overload
                 Main.NewText("BOOM! electron on pyro"); // for debuging purposes
-                Overload.applyOverload(target, em); // applies debuff 
+                Overload.applyOverload(target, player); // applies debuff 
                 target.DelBuff(target.FindBuffIndex(ModContent.BuffType<Pyro>())); // removes debuff
                 return true; // returns true so the orginal call can know not to apply base element
             } 
@@ -54,19 +53,18 @@ namespace Celestia.Helper
             {
                 // aggravate
                 Main.NewText("BOOM! aggravate"); // for debuging purposes
-                Aggravate.applyAggravate(target, 1, damage); // applies debuff
+                Aggravate.applyAggravate(target, player, damage); // applies debuff
                 return true;
             }
             return false;
         }
         public static bool hydroDetect(NPC target, Player player, int damage)
         {
-            int em = player.GetModPlayer<EMPlayer>().elementalMastery;
             if (target.HasBuff<Pyro>())
             {
                 // vaporize 2x
                 Main.NewText("BOOM! hydro on pyro");
-                Vaporize.applyVaporize(target, 1, damage, false);
+                Vaporize.applyVaporize(target, player, damage, false);
                 target.DelBuff(target.FindBuffIndex(ModContent.BuffType<Pyro>()));
                 return true;
             }
@@ -104,12 +102,11 @@ namespace Celestia.Helper
         }
         public static bool pyroDetect(NPC target, Player player, int damage)
         {
-            int em = player.GetModPlayer<EMPlayer>().elementalMastery;
             if (target.HasBuff<Electro>())
             {
                 // overload
                 Main.NewText("BOOM (pyro on electro)!"); // 
-                Overload.applyOverload(target, em);
+                Overload.applyOverload(target, player);
                 target.DelBuff(target.FindBuffIndex(ModContent.BuffType<Electro>()));
                 return true;
             }
@@ -117,7 +114,7 @@ namespace Celestia.Helper
             {
                 // vaporize 1.5x
                 Main.NewText("BOOM! pyro on hydro");
-                Vaporize.applyVaporize(target, 1, damage, true);
+                Vaporize.applyVaporize(target, player, damage, true);
                 target.DelBuff(target.FindBuffIndex(ModContent.BuffType<Hydro>()));
                 return true;
             }
@@ -125,7 +122,7 @@ namespace Celestia.Helper
             {
                 // melt 2x            
                 Main.NewText("BOOM! pyro on cryo");
-                Melt.applyMelt(target, 1, damage, false);
+                Melt.applyMelt(target, player, damage, false);
                 target.DelBuff(target.FindBuffIndex(ModContent.BuffType<Cryo>()));
                 return true;
             }
@@ -153,12 +150,11 @@ namespace Celestia.Helper
         }
         public static bool cryoDetect(NPC target, Player player, int damage)
         {
-            int em = player.GetModPlayer<EMPlayer>().elementalMastery;
             if (target.HasBuff<Pyro>())
             {
                 // melt 1.5x      
                 Main.NewText("BOOM! cryo on pyro");
-                Melt.applyMelt(target, 1, damage, true);
+                Melt.applyMelt(target, player, damage, true);
                 target.DelBuff(target.FindBuffIndex(ModContent.BuffType<Pyro>()));
                 return true;
             }
@@ -194,7 +190,6 @@ namespace Celestia.Helper
         }
         public static bool dendroDetect(NPC target, Player player, int damage)
         {
-            int em = player.GetModPlayer<EMPlayer>().elementalMastery;
             if (target.HasBuff<Pyro>())
             {
                 // burning
@@ -214,14 +209,13 @@ namespace Celestia.Helper
             {
                 // spread
                 Main.NewText("BOOM! spread"); // for debuging purposes
-                Spread.applySpread(target, 1, damage); // applies debuff
+                Spread.applySpread(target, player, damage); // applies debuff
                 return true;
             }
             return false;
         }
         public static bool anemoDetect(NPC target, Player player, int damage)
         {
-            int em = player.GetModPlayer<EMPlayer>().elementalMastery;
             if (target.HasBuff<Pyro>())
             {
                 // swirl
@@ -246,7 +240,6 @@ namespace Celestia.Helper
         }
         public static bool geoDetect(NPC target, Player player, int damage)
         {
-            int em = player.GetModPlayer<EMPlayer>().elementalMastery;
             if (target.HasBuff<Pyro>())
             {
                 // crystalize
