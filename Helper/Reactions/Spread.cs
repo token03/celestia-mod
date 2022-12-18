@@ -2,14 +2,10 @@
 using Microsoft.Xna.Framework;
 using System;
 using Terraria;
-using Terraria.GameContent;
-using Terraria.Graphics.Renderers;
-using Terraria.ID;
-using Terraria.ModLoader;
 
 namespace Celestia.Helper.Reactions
 {
-    public class Spread : InstantReaction
+	public class Spread : InstantReaction
     {
         public static void applySpread(NPC npc, Player player, int baseDamage)
 		{

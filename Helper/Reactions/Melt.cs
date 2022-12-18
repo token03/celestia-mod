@@ -2,14 +2,10 @@
 using Microsoft.Xna.Framework;
 using System;
 using Terraria;
-using Terraria.GameContent;
-using Terraria.Graphics.Renderers;
-using Terraria.ID;
-using Terraria.ModLoader;
 
 namespace Celestia.Helper.Reactions
 {
-    public class Melt : InstantReaction
+	public class Melt : InstantReaction
     {
         public static void applyMelt(NPC npc, Player player, int baseDamage, bool reverse)
 		{

@@ -1,4 +1,5 @@
-﻿using Terraria;
+﻿using System;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -16,5 +17,30 @@ namespace Celestia.Content.Buffs.Reactions
             BuffID.Sets.LongerExpertDebuff[Type] = true; // If this buff is a debuff, setting this to true will make this buff last twice as long on players in expert mode
             BuffID.Sets.IsAnNPCWhipDebuff[Type] = true;
         }
-    }
+		public override void Update(NPC npc, ref int buffIndex)
+		{
+			npc.GetGlobalNPC<BurningNPC>().burning = true;
+		}
+
+		public class BurningNPC : GlobalNPC
+		{
+			// This is required to store information on entities that isn't shared between them.
+			public override bool InstancePerEntity => true;
+
+			public bool burning;
+
+			public override void ResetEffects(NPC npc)
+			{
+				burning = false;
+			}
+
+			public override void UpdateLifeRegen(NPC npc, ref int damage)
+			{
+				if (burning)
+				{
+					npc.lifeRegen -= 15;
+				}
+			}
+		}
+	}
 }

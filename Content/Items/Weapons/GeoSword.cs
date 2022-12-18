@@ -1,12 +1,11 @@
+using Celestia.Helper;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Celestia.Content.Buffs.Elements;
-using Celestia.Helper;
 
 namespace Celestia.Content.Items.Weapons
 {
-    public class GeoSword : ModItem
+	public class GeoSword : ModItem
     {
         public override void SetStaticDefaults()
         {

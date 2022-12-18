@@ -75,8 +75,11 @@ namespace Celestia.Helper
             }
             else if (target.HasBuff<Cryo>())
             {
-                // frozen
-                return true;
+				// frozen
+				Main.NewText("BOOM! cryo on electro"); // for debuging purposes
+				target.AddBuff(ModContent.BuffType<Frozen>(), 480); // applies debuff 
+				target.DelBuff(target.FindBuffIndex(ModContent.BuffType<Cryo>())); // removes debuff
+				return true;
             }
             else if (target.HasBuff<Dendro>())
             {
@@ -128,7 +131,7 @@ namespace Celestia.Helper
             }
             else if (target.HasBuff<Dendro>())
             {
-                // burning
+				// burning
                 return true;
             }
             else if (target.HasBuff<Anemo>())
@@ -160,8 +163,11 @@ namespace Celestia.Helper
             }
             else if (target.HasBuff<Hydro>())
             {
-                // frozen
-                return true;
+				// frozen
+				Main.NewText("BOOM! cryo on electro"); // for debuging purposes
+				target.AddBuff(ModContent.BuffType<Frozen>(), 480); // applies debuff 
+				target.DelBuff(target.FindBuffIndex(ModContent.BuffType<Hydro>())); // removes debuff
+				return true;
             }
             else if (target.HasBuff<Electro>())
             {

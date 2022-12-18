@@ -1,13 +1,12 @@
 ﻿using Celestia.Content.Buffs.Elements;
 using Celestia.Content.Buffs.Reactions;
 using Microsoft.Xna.Framework;
-using System.Collections.Generic;
 using Terraria;
 using Terraria.ModLoader;
 
 namespace Celestia.Common.GlobalNPCs
 {
-    public class GlobalNPCDraw : GlobalNPC
+	public class GlobalNPCDraw : GlobalNPC
     {
         public override void DrawEffects(NPC npc, ref Color drawColor)
         {

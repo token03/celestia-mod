@@ -2,14 +2,10 @@
 using Microsoft.Xna.Framework;
 using System;
 using Terraria;
-using Terraria.GameContent;
-using Terraria.Graphics.Renderers;
-using Terraria.ID;
-using Terraria.ModLoader;
 
 namespace Celestia.Helper.Reactions
 {
-    public class Aggravate : InstantReaction
+	public class Aggravate : InstantReaction
     {
         public static void applyAggravate(NPC npc, Player player, int baseDamage)
 		{

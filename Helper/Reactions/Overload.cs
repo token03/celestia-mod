@@ -2,14 +2,10 @@
 using Microsoft.Xna.Framework;
 using System;
 using Terraria;
-using Terraria.GameContent;
-using Terraria.Graphics.Renderers;
-using Terraria.ID;
-using Terraria.ModLoader;
 
 namespace Celestia.Helper.Reactions
 {
-    public class Overload : InstantReaction
+	public class Overload : InstantReaction
     {
         private const int BASE_DAMAGE = 20; 
         public static void applyOverload(NPC npc, Player player)

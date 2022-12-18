@@ -18,31 +18,31 @@ namespace Celestia.Content.Buffs.Reactions
             BuffID.Sets.IsAnNPCWhipDebuff[Type] = true;
         }
 
-        public override void Update(NPC npc, ref int buffIndex)
-        {
-            npc.GetGlobalNPC<SuperconductNPC>().superconduct = true;
-        }
+		public override void Update(NPC npc, ref int buffIndex)
+		{
+			npc.GetGlobalNPC<SuperconductNPC>().superconduct = true;
+		}
 
-        public class SuperconductNPC : GlobalNPC
-        {
-            // This is required to store information on entities that isn't shared between them.
-            public override bool InstancePerEntity => true;
+		public class SuperconductNPC : GlobalNPC
+		{
+			// This is required to store information on entities that isn't shared between them.
+			public override bool InstancePerEntity => true;
 
-            public bool superconduct;
+			public bool superconduct;
 
-            public override void ResetEffects(NPC npc)
-            {
-                superconduct = false;
-            }
+			public override void ResetEffects(NPC npc)
+			{
+				superconduct = false;
+			}
 
-            public override bool StrikeNPC(NPC npc, ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
-            {
-                if(superconduct)
-                {
-                    npc.defense *= Convert.ToInt32(defense * .6);
-                }
-                return true;
-            }
-        }
-    }
+			public override bool StrikeNPC(NPC npc, ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
+			{
+				if (superconduct)
+				{
+					npc.defense *= Convert.ToInt32(defense * .6);
+				}
+				return true;
+			}
+		}
+	}
 }

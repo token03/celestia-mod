@@ -1,25 +1,25 @@
+using Celestia.Content.Buffs.Elements;
+using Celestia.Helper;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Celestia.Content.Buffs.Elements;
-using Celestia.Helper;
 
 namespace Celestia.Content.Items.Weapons
 {
-    public class ElectroSword : ModItem
+	public class ElectroSword : ModItem
     {
         public override void SetStaticDefaults()
         {
             // DisplayName.SetDefault("a"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
             Tooltip.SetDefault("This is a basic modded sword.");
         }
-
+		
         public override void SetDefaults()
         {
             Item.damage = 25;
             Item.DamageType = DamageClass.Melee;
             Item.width = 40;
-            Item.height = 40;
+            Item.height = 4;
             Item.useTime = 20;
             Item.useAnimation = 20;
             Item.useStyle = 1;

@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace Celestia.Content.Items.Accessories
 {
-    public class ElementalMasteryAccesory : ModItem
+	public class ElementalMasteryAccesory : ModItem
     {
         public override void SetStaticDefaults()
         {
