@@ -1,7 +1,10 @@
 ﻿using Celestia.Common.Players;
+using Celestia.Content.Items;
+using IL.Terraria.DataStructures;
 using Microsoft.Xna.Framework;
 using System;
 using Terraria;
+using Terraria.ModLoader;
 
 namespace Celestia.Helper.Reactions
 {
@@ -12,12 +15,13 @@ namespace Celestia.Helper.Reactions
 		{
 			int em = player.GetModPlayer<EMPlayer>().elementalMastery;
 			int damage = damageCalc(em); // Calcs the damage
-			ApplyReactionDamage(npc, damage, Color.Purple, player);
+			ApplyReactionDamage(npc, damage, Color.Purple, player); // does damage and other stuff
+			Item.NewItem(npc.GetSource_FromAI(), npc.getRect(), ModContent.ItemType<EnergyParticle>()); // drops particle?
         }
 
         public static int damageCalc(int em)
         {
-            double damage = em * MathHelper.GetRandomNumber(0.85, 1.15);
+            double damage = em * MathHelper.GetRandomDouble(0.85, 1.15);
             return Convert.ToInt32(damage);
         }
     }

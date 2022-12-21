@@ -6,6 +6,13 @@ namespace Celestia.Helper.Reactions
 {
 	public class InstantReaction
 	{
+		/// <summary>
+		/// Applies damage to given NPC and sets the CombatText to given Color.
+		/// </summary>
+		/// <param name="npc">NPC to deal damage to</param>
+		/// <param name="damage">Damage to deal</param>
+		/// <param name="color">Color of CombatText</param>
+		/// <param name="player">Player who dealt the damage</param>
 		public static void ApplyReactionDamage(NPC npc, int damage, Color color, Player player)
 		{
 			double strikeDamage = npc.StrikeNPC(Convert.ToInt32(damage / 2), 0, 0, true); // converts to crit to reduce errors (lol)

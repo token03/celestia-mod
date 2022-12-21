@@ -11,13 +11,19 @@ namespace Celestia.Helper
 {
     public static class MathHelper
     {
-        public static double GetRandomNumber(double minimum, double maximum)
+		/// <summary>
+		///  Returns a random double between given maximum and minimum.
+		/// </summary>
+		/// <param name="minimum"></param>
+		/// <param name="maximum"></param>
+		/// <returns></returns>
+        public static double GetRandomDouble(double minimum, double maximum)
         {
             Random random = new Random();
             return random.NextDouble() * (maximum - minimum) + minimum;
         }
 
-        public static double GetRandomNumber(Random random, double minimum, double maximum)
+        public static double GetRandomDouble(Random random, double minimum, double maximum)
         {
             return random.NextDouble() * (maximum - minimum) + minimum;
         }

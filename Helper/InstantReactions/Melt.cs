@@ -5,19 +5,19 @@ using Terraria;
 
 namespace Celestia.Helper.Reactions
 {
-	public class Vaporize : InstantReaction
+	public class Melt : InstantReaction
     {
-        public static void applyVaporize(NPC npc, Player player, int baseDamage, bool reverse)
+        public static void applyMelt(NPC npc, Player player, int baseDamage, bool reverse)
 		{
 			int em = player.GetModPlayer<EMPlayer>().elementalMastery;
 			int damage = damageCalc(em, baseDamage, reverse); // Calculates damage
-			ApplyReactionDamage(npc, damage, Color.LightCyan, player);
-        }
+			ApplyReactionDamage(npc, damage, Color.LightBlue, player);
+		}
 
         public static int damageCalc(int em, int baseDamage, bool reverse)
         {
-            double vapeMultipler = reverse ? 2.5 : 4;
-            double damage = baseDamage * MathHelper.GetRandomNumber(0.85, 1.15) * vapeMultipler;
+            double meltMultiplier = reverse ? 2.5 : 4;
+            double damage = baseDamage * MathHelper.GetRandomDouble(0.85, 1.15) * meltMultiplier;
             return Convert.ToInt32(damage);
         }
     }
