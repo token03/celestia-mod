@@ -15,7 +15,7 @@ namespace Celestia.Helper.Reactions
 		{
 			int em = player.GetModPlayer<EMPlayer>().ElementalMastery;
 			int damage = damageCalc(em); // Calcs the damage 
-			ApplyReactionDamage(npc, damage, Color.Purple, player); // does damage and other stuff
+			applyReactionDamage(npc, damage, Color.Purple, player); // does damage and other stuff
 			Item.NewItem(npc.GetSource_FromAI(), npc.getRect(), ModContent.ItemType<EnergyParticle>()); // drops particle?
         }
 

@@ -11,6 +11,7 @@ namespace Celestia.Common.Players
 		/// Should always be equal to either <b>ModContent.BuffType<Element>()</b> or -1 (No Vision)
 		/// </summary>
 		private int _vision;
+
 		public int Vision
 		{
 			get { return _vision; }
@@ -26,9 +27,7 @@ namespace Celestia.Common.Players
 					ModContent.BuffType<Dendro>(),
 					ModContent.BuffType<Electro>(), // (PLEASE REFACTOR IF YOU CAN DO BETTER)
 				}.Contains(value))
-				{
 					_vision = value;
-				}
 			}
 		}
 

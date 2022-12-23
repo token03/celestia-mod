@@ -10,6 +10,7 @@ using System.Collections.Generic;
 
 namespace Celestia.UI
 {
+	// Code compeltly based off ExampleMod. Probably change later to suit our needs.
 	internal class ElementBurstGauge : UIState
 	{
 		private UIElement area;

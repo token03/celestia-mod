@@ -11,7 +11,7 @@ namespace Celestia.Helper.Reactions
 		{
 			int em = player.GetModPlayer<EMPlayer>().ElementalMastery;
 			int damage = damageCalc(em, baseDamage); // Calculates damage
-			ApplyReactionDamage(npc, damage, Color.Orchid, player); // Does the damage
+			applyReactionDamage(npc, damage, Color.Orchid, player); // Does the damage
 		}
 
 		public static int damageCalc(int em, int baseDamage)

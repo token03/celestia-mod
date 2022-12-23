@@ -33,6 +33,7 @@ namespace Celestia.Content.Items.Weapons
             Item.rare = 2;
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;
+			Item.shootSpeed = 10;
 			swings = 0;
         }
 
@@ -65,18 +66,30 @@ namespace Celestia.Content.Items.Weapons
 			BurstPlayer burstPlayer = player.GetModPlayer<BurstPlayer>();
 			if (player.altFunctionUse == 2 && burstPlayer.CurrentEnergy >= burstPlayer.MaxEnergy)
 			{
-				Item.useStyle = ItemUseStyleID.Thrust;
+				// NONE OF THIS SHIT WORKS? WHY? SOMEONE FIX!
+				// CURRENTLY IT JUST SWINGS WHEN RIGHT CLICK? WHY???
+				Item.autoReuse = false;
+				Item.noMelee = true;
+				Item.useStyle = ItemUseStyleID.RaiseLamp;
 				Item.shoot = ProjectileID.TerraBeam;
+				Item.channel = true;
 				burstPlayer.CurrentEnergy = 0;
 			}
 			else
 			{
+				Item.channel = false;
+				Item.autoReuse = true;
+				Item.noMelee = false;
 				Item.useStyle = ItemUseStyleID.Swing;
 				Item.shoot = ProjectileID.None;
 			}
 			return false;
 		}
-
+		public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
+		{
+			type = ProjectileID.BulletHighVelocity;
+			damage *= 100;
+		}
 		public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();
