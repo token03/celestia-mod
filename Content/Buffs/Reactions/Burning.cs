@@ -19,7 +19,7 @@ namespace Celestia.Content.Buffs.Reactions
         }
 		public override void Update(NPC npc, ref int buffIndex)
 		{
-			npc.GetGlobalNPC<BurningNPC>().burning = true;
+			npc.GetGlobalNPC<BurningNPC>().Burning = true;
 		}
 
 		public class BurningNPC : GlobalNPC
@@ -27,18 +27,18 @@ namespace Celestia.Content.Buffs.Reactions
 			// This is required to store information on entities that isn't shared between them.
 			public override bool InstancePerEntity => true;
 
-			public bool burning;
+			public bool Burning { get; set; }
 
 			public override void ResetEffects(NPC npc)
 			{
-				burning = false;
+				Burning = false;
 			}
 
 			public override void UpdateLifeRegen(NPC npc, ref int damage)
 			{
-				if (burning)
+				if (Burning)
 				{
-					npc.lifeRegen -= 15;
+					npc.lifeRegen -= Convert.ToInt32(damage * .2f);
 				}
 			}
 		}

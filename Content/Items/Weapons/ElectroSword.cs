@@ -30,7 +30,7 @@ namespace Celestia.Content.Items.Weapons
             Item.knockBack = 6;
             Item.value = 10000;
 			Item.useStyle = ItemUseStyleID.Swing;
-            Item.rare = 2;
+            Item.rare = ItemRarityID.Green;
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;
 			Item.shootSpeed = 10;
@@ -68,11 +68,13 @@ namespace Celestia.Content.Items.Weapons
 			{
 				// NONE OF THIS SHIT WORKS? WHY? SOMEONE FIX!
 				// CURRENTLY IT JUST SWINGS WHEN RIGHT CLICK? WHY???
-				Item.autoReuse = false;
-				Item.noMelee = true;
-				Item.useStyle = ItemUseStyleID.RaiseLamp;
-				Item.shoot = ProjectileID.TerraBeam;
 				Item.channel = true;
+				Item.autoReuse = false;
+				Item.useStyle = ItemUseStyleID.RaiseLamp;
+				Projectile.NewProjectile(Item.GetSource_ItemUse(Item),
+									Main.MouseWorld,
+									Vector2.Normalize(player.position - Main.MouseWorld) * 5,
+									ProjectileID.BulletHighVelocity, 100, 5, player.whoAmI); // PROJECTILE GETS FIRED BUT WHY SWING? JUST HOLD OUT SWORD PLEASE!!!
 				burstPlayer.CurrentEnergy = 0;
 			}
 			else

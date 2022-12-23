@@ -19,7 +19,7 @@ namespace Celestia.Content.Buffs.Reactions
         }
         public override void Update(NPC npc, ref int buffIndex)
         {
-            npc.GetGlobalNPC<QuickenNPC>().quicken = true;
+            npc.GetGlobalNPC<QuickenNPC>().Quicken = true;
         }
 
         public class QuickenNPC : GlobalNPC
@@ -27,11 +27,11 @@ namespace Celestia.Content.Buffs.Reactions
             // This is required to store information on entities that isn't shared between them.
             public override bool InstancePerEntity => true;
 
-            public bool quicken;
+			public bool Quicken { get; set; }
 
-            public override void ResetEffects(NPC npc)
+			public override void ResetEffects(NPC npc)
             {
-                quicken = false;
+                Quicken = false;
             }            
         }
     }

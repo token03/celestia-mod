@@ -20,7 +20,7 @@ namespace Celestia.Content.Buffs.Reactions
 
 		public override void Update(NPC npc, ref int buffIndex)
 		{
-			npc.GetGlobalNPC<SuperconductNPC>().superconduct = true;
+			npc.GetGlobalNPC<SuperconductNPC>().Superconduct = true;
 		}
 
 		public class SuperconductNPC : GlobalNPC
@@ -28,16 +28,16 @@ namespace Celestia.Content.Buffs.Reactions
 			// This is required to store information on entities that isn't shared between them.
 			public override bool InstancePerEntity => true;
 
-			public bool superconduct;
+			public bool Superconduct { get; set; }
 
 			public override void ResetEffects(NPC npc)
 			{
-				superconduct = false;
+				Superconduct = false;
 			}
 
 			public override bool StrikeNPC(NPC npc, ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
 			{
-				if (superconduct)
+				if (Superconduct)
 				{
 					npc.defense *= Convert.ToInt32(defense * .6);
 				}

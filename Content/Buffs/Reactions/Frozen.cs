@@ -20,7 +20,7 @@ namespace Celestia.Content.Buffs.Reactions
 		}
 		public override void Update(NPC npc, ref int buffIndex)
 		{
-			npc.GetGlobalNPC<FrozenNPC>().frozen = true;
+			npc.GetGlobalNPC<FrozenNPC>().Frozen = true;
 			if (npc.boss) npc.velocity *= 0.5f; else npc.velocity *= 0.01f;
 		}
 
@@ -29,11 +29,11 @@ namespace Celestia.Content.Buffs.Reactions
 			// This is required to store information on entities that isn't shared between them.
 			public override bool InstancePerEntity => true;
 
-			public bool frozen;
+			public bool Frozen { get; set; }
 
 			public override void ResetEffects(NPC npc)
 			{
-				frozen = false;
+				Frozen = false;
 			}
 		}
 	}
