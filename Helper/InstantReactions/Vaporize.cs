@@ -9,7 +9,7 @@ namespace Celestia.Helper.Reactions
     {
         public static void applyVaporize(NPC npc, Player player, int baseDamage, bool reverse)
 		{
-			int em = player.GetModPlayer<EMPlayer>().elementalMastery;
+			int em = player.GetModPlayer<EMPlayer>().ElementalMastery;
 			int damage = damageCalc(em, baseDamage, reverse); // Calculates damage
 			ApplyReactionDamage(npc, damage, Color.LightCyan, player);
         }

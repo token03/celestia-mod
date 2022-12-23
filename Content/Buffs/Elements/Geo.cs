@@ -10,7 +10,7 @@ namespace Celestia.Content.Buffs.Elements
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Electro Debuff"); // Buff display name
+            DisplayName.SetDefault("Geo Debuff"); // Buff display name
             Description.SetDefault("Losing life"); // Buff description
             Main.debuff[Type] = true;  // Is it a debuff?
             Main.pvpBuff[Type] = true; // Players can give other players buffs, which are listed as pvpBuff

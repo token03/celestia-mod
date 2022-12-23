@@ -13,6 +13,7 @@ namespace Celestia.Common.GlobalNPCs
             if (npc.HasBuff<Superconduct>())
             {
                 drawColor = Color.GhostWhite;
+
             }
 			else if (npc.HasBuff<Quicken>())
 			{

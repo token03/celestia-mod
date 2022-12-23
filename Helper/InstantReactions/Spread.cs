@@ -9,7 +9,7 @@ namespace Celestia.Helper.Reactions
     {
         public static void applySpread(NPC npc, Player player, int baseDamage)
 		{
-			int em = player.GetModPlayer<EMPlayer>().elementalMastery;
+			int em = player.GetModPlayer<EMPlayer>().ElementalMastery;
 			int damage = damageCalc(em, baseDamage); // Calculates damage
 			ApplyReactionDamage(npc, damage, Color.ForestGreen, player);
 		}

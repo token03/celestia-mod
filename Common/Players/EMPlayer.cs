@@ -4,11 +4,11 @@ namespace Celestia.Common.Players
 {
 	public class EMPlayer : ModPlayer
     {
-        public int elementalMastery = 0;
+		public int ElementalMastery { get; set; }
 
-        public override void ResetEffects()
+		public override void ResetEffects()
         {
-            elementalMastery = 0;
+            ElementalMastery = 0;
         }
     }
 }

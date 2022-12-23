@@ -9,6 +9,36 @@ namespace Celestia.Helper
 {
     public static class ReactionHelper
     {
+		/// <summary>
+		/// Applies a elemental reaction using current player vision element.
+		/// </summary>
+		/// <param name="target"></param>
+		/// <param name="player"></param>
+		/// <param name="damage"></param>
+		/// <param name="vision"></param>
+		/// <returns></returns>
+		public static bool visionReaction(NPC target, Player player, int damage, int vision)
+		{
+			switch (vision)
+			{ 
+				case var value when value == ModContent.BuffType<Pyro>(): // I WISH i knew how this worked. 
+					return pyroDetect(target, player, damage); // Like look at this: https://stackoverflow.com/questions/7593377/switch-case-in-c-sharp-a-constant-value-is-expected
+				case var value when value == ModContent.BuffType<Geo>():
+					return geoDetect(target, player, damage);
+				case var value when value == ModContent.BuffType<Hydro>():
+					return hydroDetect(target, player, damage);
+				case var value when value == ModContent.BuffType<Cryo>():
+					return cryoDetect(target, player, damage);
+				case var value when value == ModContent.BuffType<Dendro>():
+					return dendroDetect(target, player, damage);
+				case var value when value == ModContent.BuffType<Anemo>():
+					return anemoDetect(target, player, damage);
+				case var value when value == ModContent.BuffType<Electro>():
+					return electroDetect(target, player, damage);
+				default:
+					return false;
+			}
+		}
         // Each respective detector is called based on elemental application (i.e Applying element calls elementDetect).
         // If another element is detected apply respective reaction to target NPC and remove base element.
         public static bool electroDetect(NPC target, Player player, int damage)

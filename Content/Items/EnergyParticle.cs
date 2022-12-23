@@ -10,8 +10,8 @@ namespace Celestia.Content.Items
 		public override bool OnPickup(Player player)
 		{
 			BurstPlayer burstPlayer = player.GetModPlayer<BurstPlayer>();
-			burstPlayer.currentEnergy += 5;
-			if (burstPlayer.currentEnergy > burstPlayer.MaxEnergy) burstPlayer.currentEnergy = burstPlayer.MaxEnergy;
+			burstPlayer.CurrentEnergy += 50;
+			if (burstPlayer.CurrentEnergy > burstPlayer.MaxEnergy) burstPlayer.CurrentEnergy = burstPlayer.MaxEnergy;
 			return false;
 		}
 

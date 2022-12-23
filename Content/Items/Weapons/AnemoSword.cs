@@ -35,7 +35,7 @@ namespace Celestia.Content.Items.Weapons
             {
                 //d
             }
-        }
+        } 
 
         public override void AddRecipes()
         {
