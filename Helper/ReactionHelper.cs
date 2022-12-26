@@ -1,5 +1,4 @@
-﻿using Celestia.Common.Players;
-using Celestia.Content.Buffs.Elements;
+﻿using Celestia.Content.Buffs.Elements;
 using Celestia.Content.Buffs.Reactions;
 using Celestia.Helper.Reactions;
 using Terraria;
@@ -45,8 +44,7 @@ namespace Celestia.Helper
         {
             if (target.HasBuff<Pyro>())
             {
-                // overload
-                Main.NewText("BOOM! electron on pyro"); // for debuging purposes
+                // overload	
                 Overload.applyOverload(target, player); // applies debuff 
                 target.DelBuff(target.FindBuffIndex(ModContent.BuffType<Pyro>())); // removes debuff
                 return true; // returns true so the orginal call can know not to apply base element
@@ -59,7 +57,6 @@ namespace Celestia.Helper
             else if (target.HasBuff<Cryo>())
             {
                 // superconduct
-                Main.NewText("BOOM! electron on cryo"); // for debuging purposes
                 target.AddBuff(ModContent.BuffType<Superconduct>(), 480); // applies debuff 
                 target.DelBuff(target.FindBuffIndex(ModContent.BuffType<Cryo>())); // removes debuff
                 return true;
@@ -82,7 +79,6 @@ namespace Celestia.Helper
             else if (target.HasBuff<Quicken>())
             {
                 // aggravate
-                Main.NewText("BOOM! aggravate"); // for debuging purposes
                 Aggravate.applyAggravate(target, player, damage); // applies debuff
                 return true;
             }
@@ -93,7 +89,6 @@ namespace Celestia.Helper
             if (target.HasBuff<Pyro>())
             {
                 // vaporize 2x
-                Main.NewText("BOOM! hydro on pyro");
                 Vaporize.applyVaporize(target, player, damage, false);
                 target.DelBuff(target.FindBuffIndex(ModContent.BuffType<Pyro>()));
                 return true;
@@ -106,7 +101,6 @@ namespace Celestia.Helper
             else if (target.HasBuff<Cryo>())
             {
 				// frozen
-				Main.NewText("BOOM! cryo on electro"); // for debuging purposes
 				target.AddBuff(ModContent.BuffType<Frozen>(), 480); // applies debuff 
 				target.DelBuff(target.FindBuffIndex(ModContent.BuffType<Cryo>())); // removes debuff
 				return true;
@@ -138,7 +132,6 @@ namespace Celestia.Helper
             if (target.HasBuff<Electro>())
             {
                 // overload
-                Main.NewText("BOOM (pyro on electro)!"); // 
                 Overload.applyOverload(target, player);
                 target.DelBuff(target.FindBuffIndex(ModContent.BuffType<Electro>()));
                 return true;
@@ -146,7 +139,6 @@ namespace Celestia.Helper
             else if (target.HasBuff<Hydro>())
             {
                 // vaporize 1.5x
-                Main.NewText("BOOM! pyro on hydro");
                 Vaporize.applyVaporize(target, player, damage, true);
                 target.DelBuff(target.FindBuffIndex(ModContent.BuffType<Hydro>()));
                 return true;
@@ -154,7 +146,6 @@ namespace Celestia.Helper
             else if (target.HasBuff<Cryo>())
             {
                 // melt 2x            
-                Main.NewText("BOOM! pyro on cryo");
                 Melt.applyMelt(target, player, damage, false);
                 target.DelBuff(target.FindBuffIndex(ModContent.BuffType<Cryo>()));
                 return true;
@@ -186,7 +177,6 @@ namespace Celestia.Helper
             if (target.HasBuff<Pyro>())
             {
                 // melt 1.5x      
-                Main.NewText("BOOM! cryo on pyro");
                 Melt.applyMelt(target, player, damage, true);
                 target.DelBuff(target.FindBuffIndex(ModContent.BuffType<Pyro>()));
                 return true;
@@ -194,7 +184,6 @@ namespace Celestia.Helper
             else if (target.HasBuff<Hydro>())
             {
 				// frozen
-				Main.NewText("BOOM! cryo on electro"); // for debuging purposes
 				target.AddBuff(ModContent.BuffType<Frozen>(), 480); // applies debuff 
 				target.DelBuff(target.FindBuffIndex(ModContent.BuffType<Hydro>())); // removes debuff
 				return true;
@@ -202,7 +191,6 @@ namespace Celestia.Helper
             else if (target.HasBuff<Electro>())
             {
                 // superconduct
-                Main.NewText("BOOM! cryo on electro"); // for debuging purposes
                 target.AddBuff(ModContent.BuffType<Superconduct>(), 480); // applies debuff 
                 target.DelBuff(target.FindBuffIndex(ModContent.BuffType<Electro>())); // removes debuff
                 return true;
@@ -244,7 +232,6 @@ namespace Celestia.Helper
             else if (target.HasBuff<Quicken>())
             {
                 // spread
-                Main.NewText("BOOM! spread"); // for debuging purposes
                 Spread.applySpread(target, player, damage); // applies debuff
                 return true;
             }
@@ -278,7 +265,9 @@ namespace Celestia.Helper
         {
             if (target.HasBuff<Pyro>())
             {
-                // crystalize
+				// crystalize
+				target.DelBuff(target.FindBuffIndex(ModContent.BuffType<Pyro>()));
+				InstantReactions.Crystalize.applyCrystalize(target, player, damage);
                 return true;
             }
             else if (target.HasBuff<Hydro>())
