@@ -1,27 +1,33 @@
 ﻿using Celestia.Content.Buffs.Elements;
 using Microsoft.Xna.Framework;
-using System;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.ModLoader.Utilities;
 
 namespace Celestia.Content.NPCs
 {
 	public class BloomCore : ModNPC
 	{
-		private bool electroTrigger, pyroTrigger;
+		private const int NO_TRIGGER = 0;
+		private const int ELECTRO_TRIGGER = 1;
+		private const int PYRO_TRIGGER = 2;
+		private const int LIFE_SPAN = BloomGlobalNPC.LIFE_SPAN;
+		private ref float aiTimer => ref NPC.ai[0];
+		private ref float aiTrigger => ref NPC.ai[1];
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Flutter Slime"); // Automatic from localization files
-			Main.npcFrameCount[NPC.type] = 6; // make sure to set this for your modnpcs.
+			Main.npcFrameCount[NPC.type] = 1; // make sure to set this for your modnpcs.
 
 			// Specify the debuffs it is immune to
 			NPCID.Sets.DebuffImmunitySets.Add(Type, new NPCDebuffImmunityData
 			{
 				SpecificallyImmuneTo = new int[] {
-					BuffID.Poisoned // This NPC will be immune to the Poisoned debuff.
+					ModContent.BuffType<Hydro>(),
+					ModContent.BuffType<Dendro>(),
+					ModContent.BuffType<Cryo>(),
+					ModContent.BuffType<Geo>(),
+					ModContent.BuffType<Anemo>(),
 				}
 			});
 		}
@@ -37,42 +43,68 @@ namespace Celestia.Content.NPCs
 			NPC.HitSound = SoundID.NPCHit1; // The sound the NPC will make when being hit.
 			NPC.DeathSound = SoundID.NPCDeath1; // The sound the NPC will make when it dies.
 			NPC.value = 0f; // How many copper coins the NPC will drop when killed.
-			NPC.ai[0] = 180;
+			aiTimer = 0;
+			aiTrigger = NO_TRIGGER;
 		}
 
 		public override bool StrikeNPC(ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
 		{
-			damage = 0f;
+			if(aiTimer < LIFE_SPAN)
+				damage = 0f;
 			return false;
+		}
+
+		public override void OnKill()
+		{
+			Player orginPlayer = NPC.GetGlobalNPC<BloomGlobalNPC>().OrginPlayer;
+			Main.NewText("Owner: " + orginPlayer.name);
+
+			switch (aiTrigger)
+			{
+				case NO_TRIGGER:
+					Projectile.NewProjectile(NPC.GetSource_Death(), NPC.position, new Vector2(0, 2), ProjectileID.BallofFire,
+				NPC.GetGlobalNPC<BloomGlobalNPC>().BaseDamage, 0, orginPlayer.whoAmI);
+					break;
+			}
 		}
 
 		public override void AI()
 		{
-			if (NPC.ai[0] == 0)
-			{
-				NPC.life = 0;
-				NPC.active = false;
-				Main.NewText("BOOM!");
-			}
 
-			if (electroTrigger || pyroTrigger)
+			if (aiTimer >= LIFE_SPAN)
 			{
-				NPC.ai[0]--;
+				NPC.StrikeNPC(1, 0, 0, false, true);
 				return;
 			}
 
+			if (aiTrigger is ELECTRO_TRIGGER or PYRO_TRIGGER)
+			{
+				aiTimer++;
+				return;
+			}
+			
 			if (NPC.HasBuff(ModContent.BuffType<Electro>()))
 			{
-				NPC.ai[0] = 60;
-				electroTrigger = true;
-			} else if (NPC.HasBuff(ModContent.BuffType<Pyro>()))
+				aiTimer = 1990;
+				aiTrigger = ELECTRO_TRIGGER;
+				return;
+			} 
+			else if (NPC.HasBuff(ModContent.BuffType<Pyro>()))
 			{
-				NPC.ai[0] = 60;
-				pyroTrigger = true;
-			} else
-			{
-				NPC.ai[0]--;
-			}
+				aiTimer = 150;
+				aiTrigger = PYRO_TRIGGER;
+				return;
+			} 
+
+			aiTimer++;
 		}
+	}
+
+	public class BloomGlobalNPC : GlobalNPC
+	{
+		public const int LIFE_SPAN = 2000;
+		public override bool InstancePerEntity => true;
+		public Player OrginPlayer { get; set; }
+		public int BaseDamage { get; set; }
 	}
 }

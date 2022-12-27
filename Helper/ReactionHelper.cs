@@ -1,5 +1,6 @@
 ﻿using Celestia.Content.Buffs.Elements;
 using Celestia.Content.Buffs.Reactions;
+using Celestia.Helper.InstantReactions;
 using Celestia.Helper.Reactions;
 using Terraria;
 using Terraria.ModLoader;
@@ -107,8 +108,10 @@ namespace Celestia.Helper
             }
             else if (target.HasBuff<Dendro>())
             {
-                // bloom
-                return true;
+				// bloom
+				Bloom.applyBloom(target, player, damage);
+				target.DelBuff(target.FindBuffIndex(ModContent.BuffType<Dendro>()));
+				return true;
             }
             else if (target.HasBuff<Anemo>())
             {
@@ -221,8 +224,10 @@ namespace Celestia.Helper
             }
             else if (target.HasBuff<Hydro>())
             {
-                // bloom
-                return true;
+				// bloom
+				Bloom.applyBloom(target, player, damage);
+				target.DelBuff(target.FindBuffIndex(ModContent.BuffType<Hydro>()));
+				return true;
             }
             else if (target.HasBuff<Electro>())
             {

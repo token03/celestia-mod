@@ -21,7 +21,7 @@ namespace Celestia.Content.Buffs.Reactions
 		public override void Update(NPC npc, ref int buffIndex)
 		{
 			npc.GetGlobalNPC<FrozenNPC>().Frozen = true;
-			if (npc.boss) npc.velocity *= 0.5f; else npc.velocity *= 0.01f;
+			if (npc.boss) npc.velocity *= 0.5f; else npc.velocity *= 0.001f;
 		}
 
 		public class FrozenNPC : GlobalNPC
