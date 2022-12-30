@@ -14,6 +14,10 @@ namespace Celestia.Common.GlobalNPCs
             {
                 drawColor = Color.GhostWhite;
             }
+			else if (npc.HasBuff<ElectroCharged>())
+			{
+				drawColor = Color.Lavender;
+			}
 			else if (npc.HasBuff<Quicken>())
 			{
 				drawColor = Color.DarkOliveGreen;

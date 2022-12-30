@@ -36,9 +36,4 @@ namespace Celestia.Content.Buffs.Reactions
 			}
 		}
 	}
-
-	public class ElectroChargedProjectile : ModProjectile
-	{
-		 
-	}
 }

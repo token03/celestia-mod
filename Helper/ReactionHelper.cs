@@ -52,8 +52,10 @@ namespace Celestia.Helper
             } 
             else if (target.HasBuff<Hydro>())
             {
-                // electrocharged
-                return true;
+				// electrocharged
+				ElectroChargedHelper.applyElectroCharged(target, player, damage); // applies debuff 
+				target.DelBuff(target.FindBuffIndex(ModContent.BuffType<Hydro>())); // removes debuff
+				return true;
             } 
             else if (target.HasBuff<Cryo>())
             {
@@ -96,8 +98,10 @@ namespace Celestia.Helper
             }
             else if (target.HasBuff<Electro>())
             {
-                // electrocharged
-                return true;
+				// electrocharged
+				ElectroChargedHelper.applyElectroCharged(target, player, damage); // applies debuff 
+				target.DelBuff(target.FindBuffIndex(ModContent.BuffType<Electro>())); // removes debuff
+				return true;
             }
             else if (target.HasBuff<Cryo>())
             {
