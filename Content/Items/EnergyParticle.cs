@@ -12,7 +12,7 @@ namespace Celestia.Content.Items
 		// Should behave like a heart or mana star. 
 		public override bool OnPickup(Player player)
 		{
-			BurstPlayer burstPlayer = player.GetModPlayer<BurstPlayer>();
+			CelestiaPlayer burstPlayer = player.GetModPlayer<CelestiaPlayer>();
 			int energyGained = Convert.ToInt32(burstPlayer.EnergyRecharge * 50); 
 
 			burstPlayer.CurrentEnergy += energyGained;

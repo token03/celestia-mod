@@ -1,17 +1,20 @@
 ﻿using Celestia.Content.Buffs.Elements;
-using System.Diagnostics.Metrics;
 using System.Linq;
 using Terraria.ModLoader;
 
 namespace Celestia.Common.Players
 {
-	public class VisionPlayer : ModPlayer
+	public class CelestiaPlayer : ModPlayer
 	{
+		public int MaxEnergy { get; set; } = 100;
+		public float EnergyRecharge { get; set; }
+		public int CurrentEnergy { get; set; }
+		public int ElementalMastery { get; set; }
+
 		/// <summary>
 		/// Should always be equal to either <b>ModContent.BuffType<Element>()</b> or -1 (No Vision)
 		/// </summary>
 		private int _vision;
-
 		public int Vision
 		{
 			get { return _vision; }
@@ -30,10 +33,12 @@ namespace Celestia.Common.Players
 					_vision = value;
 			}
 		}
-
 		public override void ResetEffects()
 		{
+			EnergyRecharge = 1f;
+			ElementalMastery = 0;
 			_vision = -1;
 		}
 	}
 }
+

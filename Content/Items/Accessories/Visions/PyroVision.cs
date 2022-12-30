@@ -21,13 +21,13 @@ namespace Celestia.Content.Items.Accessories.Visions
 		}
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
-			player.GetModPlayer<VisionPlayer>().Vision = ModContent.BuffType<Pyro>();
-			player.GetModPlayer<BurstPlayer>().EnergyRecharge += .3f;
+			player.GetModPlayer<CelestiaPlayer>().Vision = ModContent.BuffType<Pyro>();
+			player.GetModPlayer<CelestiaPlayer>().EnergyRecharge += .3f;
 		}
 
 		public override bool CanEquipAccessory(Player player, int slot, bool modded)
 		{
-			return player.GetModPlayer<VisionPlayer>().Vision == -1; // prevents multiple visions from being equiped
+			return player.GetModPlayer<CelestiaPlayer>().Vision == -1; // prevents multiple visions from being equiped
 		}
 	}
 }

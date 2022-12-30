@@ -13,7 +13,7 @@ namespace Celestia.Helper.Reactions
         private const int BASE_DAMAGE = 20; 
         public static void applyOverload(NPC npc, Player player)
 		{
-			int em = player.GetModPlayer<EMPlayer>().ElementalMastery;
+			int em = player.GetModPlayer<CelestiaPlayer>().ElementalMastery;
 			int damage = damageCalc(em); // Calcs the damage 
 			applyReactionDamage(npc, damage, Color.Purple, player); // does damage and other stuff
 			Item.NewItem(npc.GetSource_FromAI(), npc.getRect(), ModContent.ItemType<EnergyParticle>()); // drops particle?

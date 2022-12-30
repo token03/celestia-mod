@@ -43,7 +43,7 @@ namespace Celestia.UI
 		{
 			base.DrawSelf(spriteBatch);
 
-			BurstPlayer modPlayer = Main.LocalPlayer.GetModPlayer<BurstPlayer>();
+			CelestiaPlayer modPlayer = Main.LocalPlayer.GetModPlayer<CelestiaPlayer>();
 
 			// create ratio and normalize between 0 and 1
 			float energyRatio = (float)modPlayer.CurrentEnergy / modPlayer.MaxEnergy;

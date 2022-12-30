@@ -34,6 +34,7 @@ namespace Celestia.Helper.InstantReactions
 		/// <returns></returns>
 		public static int manageBloomCoreCount()
 		{
+			// if ur able to do this better than me, please, by all means
 			int count = 0;
 			int oldestBloomCoreIndex = -1;
 			for (int i = 0; i < Main.npc.Length; i++)
@@ -42,10 +43,9 @@ namespace Celestia.Helper.InstantReactions
 				if (npc.type == ModContent.NPCType<BloomCore>())
 				{
 					count++;
-					if (oldestBloomCoreIndex == -1)
+					// this might be unneeded. any optimization here is probably not worth it tho considering the check happens on application
+					if (Main.npc[i].ai[0] > Main.npc[oldestBloomCoreIndex].ai[0] || oldestBloomCoreIndex == -1) 
 						oldestBloomCoreIndex = i;
-					if (Main.npc[i].ai[0] > Main.npc[oldestBloomCoreIndex].ai[0]) // this might be unneeded. optimization probably not worth it tho
-						oldestBloomCoreIndex= i;
 				}
 					
 			}

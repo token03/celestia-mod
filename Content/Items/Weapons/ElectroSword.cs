@@ -40,7 +40,7 @@ namespace Celestia.Content.Items.Weapons
         public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
         {
 			swings++;
-			int vision = player.GetModPlayer<VisionPlayer>().Vision;
+			int vision = player.GetModPlayer<CelestiaPlayer>().Vision;
 			if (swings > 2 && vision != -1)
 			{
 				if (!ReactionHelper.visionReaction(target, player, damage, vision))
@@ -63,7 +63,7 @@ namespace Celestia.Content.Items.Weapons
 
 		public override bool? UseItem(Player player)
 		{	
-			BurstPlayer burstPlayer = player.GetModPlayer<BurstPlayer>();
+			CelestiaPlayer burstPlayer = player.GetModPlayer<CelestiaPlayer>();
 			if (player.altFunctionUse == 2 && burstPlayer.CurrentEnergy >= burstPlayer.MaxEnergy)
 			{
 				// NONE OF THIS SHIT WORKS? WHY? SOMEONE FIX!

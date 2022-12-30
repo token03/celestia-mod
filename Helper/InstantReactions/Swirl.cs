@@ -10,7 +10,7 @@ namespace Celestia.Helper.InstantReactions
 	{
 		public static void applySwirl(NPC npc, Player player, int baseDamage, int element)
 		{
-			int em = player.GetModPlayer<EMPlayer>().ElementalMastery;
+			int em = player.GetModPlayer<CelestiaPlayer>().ElementalMastery;
 			int damage = damageCalc(em, baseDamage); // Calculates damage
 			applyReactionDamage(npc, damage, Color.LightCyan, player);
 		}

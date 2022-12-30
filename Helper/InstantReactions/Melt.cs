@@ -9,7 +9,7 @@ namespace Celestia.Helper.Reactions
     {
         public static void applyMelt(NPC npc, Player player, int baseDamage, bool reverse)
 		{
-			int em = player.GetModPlayer<EMPlayer>().ElementalMastery;
+			int em = player.GetModPlayer<CelestiaPlayer>().ElementalMastery;
 			int damage = damageCalc(em, baseDamage, reverse); // Calculates damage
 			applyReactionDamage(npc, damage, Color.LightBlue, player);
 		}

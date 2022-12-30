@@ -19,7 +19,7 @@ namespace Celestia.Content.Items.Accessories
         }
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.GetModPlayer<EMPlayer>().ElementalMastery += 500;
+            player.GetModPlayer<CelestiaPlayer>().ElementalMastery += 500;
         }
     }
 }
