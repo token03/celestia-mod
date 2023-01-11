@@ -49,7 +49,7 @@ namespace Celestia.Content.NPCs
 
 		public override bool StrikeNPC(ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
 		{
-			if(aiTimer < LIFE_SPAN)
+			if(aiTimer != LIFE_SPAN)
 				damage = 0f;
 			return false;
 		}
@@ -64,6 +64,10 @@ namespace Celestia.Content.NPCs
 				case NO_TRIGGER:
 					Projectile.NewProjectile(NPC.GetSource_Death(), NPC.position, new Vector2(0, 2), ProjectileID.BallofFire,
 				NPC.GetGlobalNPC<BloomGlobalNPC>().BaseDamage, 0, orginPlayer.whoAmI);
+					break;
+				case ELECTRO_TRIGGER:
+					break;
+				case PYRO_TRIGGER:
 					break;
 			}
 		}
@@ -85,13 +89,13 @@ namespace Celestia.Content.NPCs
 			
 			if (NPC.HasBuff(ModContent.BuffType<Electro>()))
 			{
-				aiTimer = 1990;
+				aiTimer = LIFE_SPAN - 10;
 				aiTrigger = ELECTRO_TRIGGER;
 				return;
 			} 
 			else if (NPC.HasBuff(ModContent.BuffType<Pyro>()))
 			{
-				aiTimer = 150;
+				aiTimer = LIFE_SPAN - 10;
 				aiTrigger = PYRO_TRIGGER;
 				return;
 			} 

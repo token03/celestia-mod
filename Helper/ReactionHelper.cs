@@ -17,9 +17,9 @@ namespace Celestia.Helper
 		/// <param name="damage"></param>
 		/// <param name="vision"></param>
 		/// <returns></returns>
-		public static bool visionReaction(NPC target, Player player, int damage, int vision)
+		public static bool elementReaction(NPC target, Player player, int damage, int element)
 		{
-			switch (vision)
+			switch (element)
 			{ 
 				case var value when value == ModContent.BuffType<Pyro>(): // I WISH i knew how this worked. 
 					return pyroDetect(target, player, damage); // Like look at this: https://stackoverflow.com/questions/7593377/switch-case-in-c-sharp-a-constant-value-is-expected
@@ -66,7 +66,9 @@ namespace Celestia.Helper
             } 
             else if (target.HasBuff<Dendro>())
             {
-                // quicken
+				// quicken
+				target.AddBuff(ModContent.BuffType<Quicken>(), 480);
+				target.DelBuff(target.FindBuffIndex(ModContent.BuffType<Dendro>()));
                 return true;
             }
             else if (target.HasBuff<Anemo>())
@@ -250,23 +252,31 @@ namespace Celestia.Helper
         {
             if (target.HasBuff<Pyro>())
             {
-                // swirl
-                return true;
+				// swirl
+				target.DelBuff(target.FindBuffIndex(ModContent.BuffType<Pyro>()));
+				Swirl.applySwirl(target, player, damage, ModContent.BuffType<Pyro>());
+				return true;
             }
             else if (target.HasBuff<Hydro>())
             {
-                // swirl
-                return true;
+				// swirl
+				target.DelBuff(target.FindBuffIndex(ModContent.BuffType<Hydro>()));
+				Swirl.applySwirl(target, player, damage, ModContent.BuffType<Hydro>());
+				return true;
             }
-            else if (target.HasBuff<Cryo>())
+			else if (target.HasBuff<Electro>())
+			{
+				// swirl
+				target.DelBuff(target.FindBuffIndex(ModContent.BuffType<Electro>()));
+				Swirl.applySwirl(target, player, damage, ModContent.BuffType<Electro>());
+				return true;
+			}
+			else if (target.HasBuff<Cryo>())
             {
-                // swirl
-                return true;
-            }
-            else if (target.HasBuff<Dendro>())
-            {
-                // swirl
-                return true;
+				// swirl
+				target.DelBuff(target.FindBuffIndex(ModContent.BuffType<Cryo>()));
+				Swirl.applySwirl(target, player, damage, ModContent.BuffType<Cryo>());
+				return true;
             }
             return false;
         }

@@ -1,7 +1,9 @@
 ﻿using Celestia.Common.Players;
 using Microsoft.Xna.Framework;
+using Terraria.ID;
 using System;
 using Terraria;
+using Terraria.Audio;
 
 namespace Celestia.Helper.Reactions
 {
@@ -11,6 +13,7 @@ namespace Celestia.Helper.Reactions
 		{
 			int em = player.GetModPlayer<CelestiaPlayer>().ElementalMastery;
 			int damage = damageCalc(em, baseDamage, reverse); // Calculates damage
+			SoundEngine.PlaySound(SoundID.Item66, npc.position); // plays sound effect
 			applyReactionDamage(npc, damage, Color.LightBlue, player);
 		}
 

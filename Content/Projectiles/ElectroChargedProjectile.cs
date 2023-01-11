@@ -34,7 +34,12 @@ namespace Celestia.Content.Projectiles
 			Projectile.light = 1f; // How much light emit around the projectile
 			Projectile.tileCollide = false; // Can the projectile collide with tiles?
 			Projectile.timeLeft = 600;
+			Projectile.penetrate = -1;
+		}
 
+		public override bool? CanDamage()
+		{
+			return false;
 		}
 		public override void OnSpawn(IEntitySource source)
 		{
@@ -45,18 +50,22 @@ namespace Celestia.Content.Projectiles
 			float maxDetectRadius = 300f;
 			float projSpeed = 5f;
 
-			if (trackedNPC.HasBuff<ElectroCharged>())
+			if (!trackedNPC.HasBuff<ElectroCharged>() || !trackedNPC.active)
 			{
-				Projectile.timeLeft = 2;
+				Projectile.timeLeft = 0;
+				return;
 			}
+			else
+				Projectile.timeLeft = 2;
 
-			Projectile.position.X = trackedNPC.position.X;
-			Projectile.position.Y = trackedNPC.position.Y - 10;
+			Projectile.Center = trackedNPC.Center;
+			Projectile.position.Y = trackedNPC.Hitbox.Top - 10;
 
 			List<NPC> inRangeNPCs = FindNPCsInRange(maxDetectRadius);
 
 			if (!inRangeNPCs.Any())
 				return;
+
 ;			if (aiTimer == 30)
 			{
 				foreach (NPC npc in inRangeNPCs)
@@ -80,7 +89,8 @@ namespace Celestia.Content.Projectiles
 			{
 				NPC target = Main.npc[i];
 
-				if (target.CanBeChasedBy() && Vector2.Distance(target.Center, Projectile.Center) < maxDetectRadius && target.HasBuff<Hydro>()) 
+				if (!target.friendly && Vector2.Distance(target.Center, Projectile.Center) < maxDetectRadius && 
+					(target.HasBuff<Hydro>() || target.HasBuff<ElectroCharged>()) && target != trackedNPC)
 					inRangeNPCs.Add(target);
 			}
 

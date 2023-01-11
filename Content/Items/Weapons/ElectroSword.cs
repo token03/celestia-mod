@@ -40,11 +40,11 @@ namespace Celestia.Content.Items.Weapons
         public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
         {
 			swings++;
-			int vision = player.GetModPlayer<CelestiaPlayer>().Vision;
-			if (swings > 2 && vision != -1)
+			int visionElement = player.GetModPlayer<CelestiaPlayer>().Vision;
+			if (swings > 2 && visionElement != -1)
 			{
-				if (!ReactionHelper.visionReaction(target, player, damage, vision))
-					target.AddBuff(vision, 1800);
+				if (!ReactionHelper.elementReaction(target, player, damage, visionElement))
+					target.AddBuff(visionElement, 1800);
 				swings = 0;
 				Main.NewText(swings);
 			}

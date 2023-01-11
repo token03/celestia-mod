@@ -1,10 +1,11 @@
 ﻿using Celestia.Common.Players;
 using Celestia.Content.Items;
-using IL.Terraria.DataStructures;
+using Terraria.Audio;
 using Microsoft.Xna.Framework;
 using System;
 using Terraria;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace Celestia.Helper.Reactions
 {
@@ -16,6 +17,7 @@ namespace Celestia.Helper.Reactions
 			int em = player.GetModPlayer<CelestiaPlayer>().ElementalMastery;
 			int damage = damageCalc(em); // Calcs the damage 
 			applyReactionDamage(npc, damage, Color.Purple, player); // does damage and other stuff
+			SoundEngine.PlaySound(SoundID.Item109, npc.position); // plays sound effect
 			Item.NewItem(npc.GetSource_FromAI(), npc.getRect(), ModContent.ItemType<EnergyParticle>()); // drops particle?
         }
 

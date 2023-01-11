@@ -12,10 +12,16 @@ namespace Celestia.Helper.InstantReactions
 	{
 		public static void applyElectroCharged(NPC npc, Player player, int baseDamage)
 		{
-			npc.AddBuff(ModContent.BuffType<ElectroCharged>(), 1800);
-			Projectile.NewProjectile(player.GetSource_OnHit(npc), npc.position, 
-				Vector2.Zero, ModContent.ProjectileType<ElectroChargedProjectile>(),
-				baseDamage, 0, player.whoAmI, ai1: npc.whoAmI);
+			if (!npc.HasBuff<ElectroCharged>())
+			{
+				npc.AddBuff(ModContent.BuffType<ElectroCharged>(), 1800);
+				Projectile.NewProjectile(player.GetSource_OnHit(npc), npc.position,
+					Vector2.Zero, ModContent.ProjectileType<ElectroChargedProjectile>(),
+					baseDamage, 0, player.whoAmI, ai1: npc.whoAmI);
+			}
+			else
+				npc.AddBuff(ModContent.BuffType<ElectroCharged>(), 1800);
+
 		}
 	}
 }
