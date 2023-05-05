@@ -11,7 +11,7 @@ namespace Celestia.Content.Items.Weapons
         public override void SetStaticDefaults()
         {
             // DisplayName.SetDefault("a"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
-            Tooltip.SetDefault("This is a basic modded sword.");
+            Tooltip.SetDefault("Kl33");
         }
 
         public override void SetDefaults()
@@ -20,8 +20,8 @@ namespace Celestia.Content.Items.Weapons
             Item.DamageType = DamageClass.Melee;
             Item.width = 40;
             Item.height = 40;
-            Item.useTime = 20;
-            Item.useAnimation = 20;
+            Item.useTime = 4;
+            Item.useAnimation = 4;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.knockBack = 6;
             Item.value = 10000;

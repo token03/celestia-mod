@@ -1,4 +1,5 @@
 using Celestia.Content.Buffs.Elements;
+using Celestia.Content.Projectiles;
 using Celestia.Helper;
 using Terraria;
 using Terraria.ID;
@@ -28,6 +29,8 @@ namespace Celestia.Content.Items.Weapons
             Item.rare = 2;
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;
+			Item.shoot = ModContent.ProjectileType<LightningBolt>();
+			Item.shootSpeed = 40f;
         }
 
         public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)

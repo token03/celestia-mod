@@ -20,7 +20,7 @@ namespace Celestia.Helper.Reactions
         public static int damageCalc(int em, int baseDamage, bool reverse)
         {
             double vapeMultipler = reverse ? 2.5 : 4;
-            double damage = baseDamage * MathHelper.GetRandomDouble(0.85, 1.15) * vapeMultipler;
+            double damage = baseDamage * MathHelp.GetRandomDouble(0.85, 1.15) * vapeMultipler;
             return Convert.ToInt32(damage);
         }
     }

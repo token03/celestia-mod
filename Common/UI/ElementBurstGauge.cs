@@ -97,7 +97,7 @@ namespace Celestia.UI
 			if (resourceBarIndex != -1)
 			{
 				layers.Insert(resourceBarIndex, new LegacyGameInterfaceLayer(
-					"ExampleMod: Example Resource Bar",
+					"Celestia: Elemental Burst Guage",
 					delegate
 					{
 						BurstGaugeUI.Draw(Main.spriteBatch, new GameTime());

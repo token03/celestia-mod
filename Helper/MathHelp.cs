@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework;
 
 namespace Celestia.Helper
 {
-    public static class MathHelper
+    public static class MathHelp
     {
         public static double GetRandomDouble(double minimum, double maximum)
         {

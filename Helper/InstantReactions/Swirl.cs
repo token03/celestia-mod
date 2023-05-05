@@ -22,7 +22,7 @@ namespace Celestia.Helper.InstantReactions
 		public static int damageCalc(int em, int baseDamage)
 		{
 			double swirlMultiplier = 1.1;
-			double damage = baseDamage * MathHelper.GetRandomDouble(0.85, 1.15) * swirlMultiplier;
+			double damage = baseDamage * MathHelp.GetRandomDouble(0.85, 1.15) * swirlMultiplier;
 			return Convert.ToInt32(damage);
 		}
 

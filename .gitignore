@@ -414,3 +414,4 @@ FodyWeavers.xsd
 commit-message.txt
 *.sfk
 .editorconfig
+.vscode/tasks.json
