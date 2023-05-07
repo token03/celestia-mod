@@ -12,7 +12,6 @@ namespace Celestia.Content.Items.Weapons.GuobaStaff
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Guoba");
-			Main.projFrames[Projectile.type] = 4;
 			ProjectileID.Sets.MinionTargettingFeature[Projectile.type] = true;
 
 			Main.projPet[Projectile.type] = true; 
@@ -43,6 +42,12 @@ namespace Celestia.Content.Items.Weapons.GuobaStaff
 		public override void AI()
 		{
 			Player owner = Main.player[Projectile.owner];
+
+			if (!CheckActive(owner))
+			{
+				return;
+			}
+
 			Projectile.velocity = new Vector2(0, 2);
 			float maxDetectRadius = 300f;
 			float projSpeed = 5f;
@@ -51,6 +56,7 @@ namespace Celestia.Content.Items.Weapons.GuobaStaff
 
 			if (!inRangeNPCs.Any())
 				return;
+
 			if (Projectile.ai[0] == 30)
 			{
 				foreach (NPC npc in inRangeNPCs)
@@ -78,12 +84,12 @@ namespace Celestia.Content.Items.Weapons.GuobaStaff
 		{
 			if (owner.dead || !owner.active)
 			{
-				owner.ClearBuff(ModContent.BuffType<ExampleSimpleMinionBuff>());
+				owner.ClearBuff(ModContent.BuffType<GuobaBuff>());
 
 				return false;
 			}
 
-			if (owner.HasBuff(ModContent.BuffType<ExampleSimpleMinionBuff>()))
+			if (owner.HasBuff(ModContent.BuffType<GuobaBuff>()))
 			{
 				Projectile.timeLeft = 2;
 			}

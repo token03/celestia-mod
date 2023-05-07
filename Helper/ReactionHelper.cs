@@ -17,7 +17,7 @@ namespace Celestia.Helper
 		/// <param name="damage"></param>
 		/// <param name="vision"></param>
 		/// <returns></returns>
-		public static bool elementReaction(NPC target, Player player, int damage, int element)
+		public static bool ElementReaction(NPC target, Player player, int damage, int element)
 		{
 			switch (element)
 			{ 

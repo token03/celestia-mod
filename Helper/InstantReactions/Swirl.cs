@@ -45,7 +45,7 @@ namespace Celestia.Helper.InstantReactions
 
 			foreach (NPC n in inRangeNPCs)
 			{
-				if (!ReactionHelper.elementReaction(n, player, damage, element))
+				if (!ReactionHelper.ElementReaction(n, player, damage, element))
 					n.AddBuff(element, 1800);
 			}
 		}

@@ -43,7 +43,7 @@ namespace Celestia.Content.Items.Weapons
 			int visionElement = player.GetModPlayer<CelestiaPlayer>().Vision;
 			if (swings > 2 && visionElement != -1)
 			{
-				if (!ReactionHelper.elementReaction(target, player, damage, visionElement))
+				if (!ReactionHelper.ElementReaction(target, player, damage, visionElement))
 					target.AddBuff(visionElement, 1800);
 				swings = 0;
 				Main.NewText(swings);
