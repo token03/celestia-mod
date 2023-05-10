@@ -20,22 +20,20 @@ namespace Celestia.Content.Items.Weapons.GuobaStaff
 		{
 			Item.damage = 30;
 			Item.knockBack = 3f;
-			Item.mana = 10; // mana cost
+			Item.mana = 10; 
 			Item.width = 32;
 			Item.height = 32;
 			Item.useTime = 36;
 			Item.useAnimation = 36;
-			Item.useStyle = ItemUseStyleID.Swing; // how the player's arm moves when using the item
+			Item.useStyle = ItemUseStyleID.Swing; 
 			Item.value = Item.sellPrice(gold: 30);
 			Item.rare = ItemRarityID.Cyan;
-			Item.UseSound = SoundID.Item44; // What sound should play when using the item
+			Item.UseSound = SoundID.Item44; 
 
-			// These below are needed for a minion weapon
-			Item.noMelee = true; // this item doesn't do any melee damage
-			Item.DamageType = DamageClass.Summon; // Makes the damage register as summon. If your item does not have any damage type, it becomes true damage (which means that damage scalars will not affect it). Be sure to have a damage type
+			Item.noMelee = true; 
+			Item.DamageType = DamageClass.Summon; 
 			Item.buffType = ModContent.BuffType<GuobaBuff>();
-			// No buffTime because otherwise the item tooltip would say something like "1 minute duration"
-			Item.shoot = ModContent.ProjectileType<Guoba>(); // This item creates the minion projectile
+			Item.shoot = ModContent.ProjectileType<Guoba>(); 
 		}
 
 		public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)

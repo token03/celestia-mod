@@ -44,7 +44,7 @@ namespace Celestia.Helper.InstantReactions
 				{
 					count++;
 					// this might be unneeded. any optimization here is probably not worth it tho considering the check happens on application
-					if (Main.npc[i].ai[0] > Main.npc[oldestBloomCoreIndex].ai[0] || oldestBloomCoreIndex == -1) 
+					if (oldestBloomCoreIndex == -1 || Main.npc[i].ai[0] > Main.npc[oldestBloomCoreIndex].ai[0] ) 
 						oldestBloomCoreIndex = i;
 				}
 					
