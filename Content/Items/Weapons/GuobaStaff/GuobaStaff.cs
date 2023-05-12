@@ -10,8 +10,8 @@ namespace Celestia.Content.Items.Weapons.GuobaStaff
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Guoba Staff");
-			Tooltip.SetDefault("Summons the God of the Stove to fight for you");
+			// DisplayName.SetDefault("Guoba Staff");
+			// Tooltip.SetDefault("Summons the God of the Stove to fight for you");
 			ItemID.Sets.GamepadWholeScreenUseRange[Item.type] = true; // This lets the player target anywhere on the whole screen while using a controller
 			ItemID.Sets.LockOnIgnoresCollision[Item.type] = true;
 		}

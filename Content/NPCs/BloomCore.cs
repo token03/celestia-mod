@@ -47,11 +47,14 @@ namespace Celestia.Content.NPCs
 			aiTrigger = NO_TRIGGER;
 		}
 
-		public override bool StrikeNPC(ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
+		public override bool? CanBeHitByItem(Player player, Item item)
 		{
-			if(aiTimer != LIFE_SPAN)
-				damage = 0f;
-			return false;
+			return aiTimer != LIFE_SPAN;
+		}
+
+		public override bool? CanBeHitByProjectile(Projectile projectile)
+		{
+			return aiTimer != LIFE_SPAN;
 		}
 
 		public override void OnKill()
@@ -77,7 +80,7 @@ namespace Celestia.Content.NPCs
 
 			if (aiTimer >= LIFE_SPAN)
 			{
-				NPC.StrikeNPC(1, 0, 0, false, true);
+				NPC.SimpleStrikeNPC(1, 0, crit: false, noPlayerInteraction: true);
 				return;
 			}
 

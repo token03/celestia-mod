@@ -8,8 +8,7 @@ namespace Celestia.Content.Items.Accessories
     {
         public override void SetStaticDefaults()
         {
-            Tooltip.SetDefault("Increases elemental mastery by 500\n" +
-                               "Increasese base damage for all weapons by 5");
+
         }
         public override void SetDefaults()
         {

@@ -15,7 +15,8 @@ namespace Celestia.Helper.Reactions
 		/// <param name="player">Player who dealt the damage</param>
 		public static void applyReactionDamage(NPC npc, int damage, Color color, Player player)
 		{
-			double strikeDamage = npc.StrikeNPC(Convert.ToInt32(damage / 2), 0, 0, true); // converts to crit to reduce errors (lol)
+			
+			double strikeDamage = npc.SimpleStrikeNPC(Convert.ToInt32(damage / 2), 0, true); // converts to crit to reduce errors (lol)
 			// checks for the newest matching combattext in main.combattext and edits it 
 			for (int i = 99; i >= 0; i--)
 			{

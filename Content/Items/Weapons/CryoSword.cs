@@ -10,8 +10,8 @@ namespace Celestia.Content.Items.Weapons
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("a"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
-			Tooltip.SetDefault("This is a basic modded sword.");
+            // DisplayName.SetDefault("a"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
+			// Tooltip.SetDefault("This is a basic modded sword.");
         }
 
         public override void SetDefaults()
@@ -30,9 +30,9 @@ namespace Celestia.Content.Items.Weapons
             Item.autoReuse = true;
         }
 
-        public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
+        public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
         {
-            if (!ReactionHelper.cryoDetect(target, player, damage))
+            if (!ReactionHelper.cryoDetect(target, player, hit.Damage))
             {
                 target.AddBuff(ModContent.BuffType<Cryo>(), 1800);
             }

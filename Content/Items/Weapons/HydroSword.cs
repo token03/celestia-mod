@@ -10,7 +10,7 @@ namespace Celestia.Content.Items.Weapons
     {
         public override void SetStaticDefaults()
         {
-            Tooltip.SetDefault("This is a basic modded sword.");
+            // Tooltip.SetDefault("This is a basic modded sword.");
         }
 
         public override void SetDefaults()
@@ -29,9 +29,9 @@ namespace Celestia.Content.Items.Weapons
             Item.autoReuse = true;
         }
 
-        public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
+        public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
         {
-            if (!ReactionHelper.hydroDetect(target, player, damage))
+            if (!ReactionHelper.hydroDetect(target, player, hit.Damage))
             {
                 target.AddBuff(ModContent.BuffType<Hydro>(), 1800);
             }

@@ -291,18 +291,24 @@ namespace Celestia.Helper
             }
             else if (target.HasBuff<Hydro>())
             {
-                // crystalize
-                return true;
+				// crystalize
+				target.DelBuff(target.FindBuffIndex(ModContent.BuffType<Hydro>()));
+				InstantReactions.Crystalize.applyCrystalize(target, player, damage);
+				return true;
             }
             else if (target.HasBuff<Cryo>())
             {
-                // crystalize
-                return true;
+				// crystalize
+				target.DelBuff(target.FindBuffIndex(ModContent.BuffType<Cryo>()));
+				InstantReactions.Crystalize.applyCrystalize(target, player, damage);
+				return true;
             }
             else if (target.HasBuff<Dendro>())
             {
-                // crystalize 
-                return true;
+				// crystalize 
+				target.DelBuff(target.FindBuffIndex(ModContent.BuffType<Dendro>()));
+				InstantReactions.Crystalize.applyCrystalize(target, player, damage);
+				return true;
             }
             return false;
         }

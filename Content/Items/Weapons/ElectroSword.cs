@@ -15,7 +15,7 @@ namespace Celestia.Content.Items.Weapons
 		private int swings;
         public override void SetStaticDefaults()
         {
-            Tooltip.SetDefault("This is a basic modded sword.");
+            // Tooltip.SetDefault("This is a basic modded sword.");
         }
 		
         public override void SetDefaults()
@@ -36,20 +36,20 @@ namespace Celestia.Content.Items.Weapons
 			swings = 0;
         }
 
-        public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
+        public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
         {
 			swings++;
 			int visionElement = player.GetModPlayer<CelestiaPlayer>().Vision;
 			if (swings > 2 && visionElement != -1)
 			{
-				if (!ReactionHelper.ElementReaction(target, player, damage, visionElement))
+				if (!ReactionHelper.ElementReaction(target, player, hit.Damage, visionElement))
 					target.AddBuff(visionElement, 1800);
 				swings = 0;
 				Main.NewText(swings);
 			}
 			else
 			{
-				if (!ReactionHelper.electroDetect(target, player, damage)) // checks if a reactive element is not applied
+				if (!ReactionHelper.electroDetect(target, player, hit.Damage)) // checks if a reactive element is not applied
 					target.AddBuff(ModContent.BuffType<Electro>(), 1800); // if a reactive element is not applied, apply base element
 				Main.NewText(swings);
 			}

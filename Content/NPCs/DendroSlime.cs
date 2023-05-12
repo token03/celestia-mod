@@ -210,7 +210,7 @@ namespace Celestia.Content.NPCs
 			jumpDuration = reader.ReadInt32();
 		}
 
-		public override void OnHitPlayer(Player target, int damage, bool crit)
+		public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
 		{
 			Main.NewText("Hello");
 		}

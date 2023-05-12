@@ -1,4 +1,6 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Celestia.Content.Buffs.Elements;
+using Celestia.Helper;
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +17,7 @@ namespace Celestia.Content.Projectiles
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Qilin Bow Projectile");
+			// DisplayName.SetDefault("Qilin Bow Projectile");
 		}
 
 		public override void SetDefaults()
@@ -33,9 +35,12 @@ namespace Celestia.Content.Projectiles
 		}
 
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
-			// TODO: ADD DUST AT THE TARGET POSITION
+			if (!ReactionHelper.cryoDetect(target, Main.player[Projectile.owner], hit.Damage))
+			{
+				target.AddBuff(ModContent.BuffType<Cryo>(), 1800);
+			}
 		}
 
 		public override void Kill(int timeLeft)
@@ -43,17 +48,6 @@ namespace Celestia.Content.Projectiles
 			Bloom(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.damage, Projectile.knockBack);
 		}
 
-		public override Color? GetAlpha(Color lightColor)
-		{
-			if(parent != 1)
-			{
-				return null;
-			}
-			else
-			{
-				return Color.Purple * Projectile.Opacity;
-			}	
-		}
 		private void Bloom(Vector2 target, int damage, float knockback)
 		{
 			if (parent != 1)

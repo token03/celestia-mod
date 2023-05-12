@@ -23,7 +23,7 @@ namespace Celestia.Content.Projectiles
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Lightning Bolt");
+			// DisplayName.SetDefault("Lightning Bolt");
 		}
 
 		public override void SetDefaults()
@@ -72,9 +72,9 @@ namespace Celestia.Content.Projectiles
 			}
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
-			ReactionHelper.electroDetect(target, Main.player[Projectile.owner], damage);
+			ReactionHelper.electroDetect(target, Main.player[Projectile.owner], hit.Damage);
 		}
 
 		public override void OnSpawn(IEntitySource source)

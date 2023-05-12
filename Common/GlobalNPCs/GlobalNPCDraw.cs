@@ -37,7 +37,7 @@ namespace Celestia.Common.GlobalNPCs
 				.Select(buffIcon => new
 				{
 					Texture = buffIcon.Value,
-					Position = npc.getRect().TopLeft() - screenPos + new Vector2(npc.getRect().Width / 2f, -buffIcon.Value.Height)
+					Position = npc.getRect().TopLeft() - screenPos + new Vector2(npc.getRect().Width / 2f, -buffIcon.Value.Height / 2f)
 				});
 
 			// Draw the icons above the NPC

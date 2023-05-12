@@ -1,0 +1,223 @@
+Mods: {
+	Celestia: {
+		Buffs: {
+			Anemo: {
+				DisplayName: Anemo
+				Description: Mods.Celestia.Buffs.Anemo.Description
+			}
+
+			Cryo: {
+				DisplayName: Cryo
+				Description: Mods.Celestia.Buffs.Cryo.Description
+			}
+
+			Dendro: {
+				DisplayName: Dendro
+				Description: Mods.Celestia.Buffs.Dendro.Description
+			}
+
+			Electro: {
+				DisplayName: Electro
+				Description: Mods.Celestia.Buffs.Electro.Description
+			}
+
+			Geo: {
+				DisplayName: Geo
+				Description: Mods.Celestia.Buffs.Geo.Description
+			}
+
+			Hydro: {
+				DisplayName: Hydro
+				Description: Mods.Celestia.Buffs.Hydro.Description
+			}
+
+			Pyro: {
+				DisplayName: Pyro
+				Description: Mods.Celestia.Buffs.Pyro.Description
+			}
+
+			Burning: {
+				DisplayName: Burning
+				Description: Mods.Celestia.Buffs.Burning.Description
+			}
+
+			Crystalize: {
+				DisplayName: Crystalize
+				Description: Mods.Celestia.Buffs.Crystalize.Description
+			}
+
+			ElectroCharged: {
+				DisplayName: Electro Charged
+				Description: Mods.Celestia.Buffs.ElectroCharged.Description
+			}
+
+			Frozen: {
+				DisplayName: Frozen
+				Description: Mods.Celestia.Buffs.Frozen.Description
+			}
+
+			Quicken: {
+				DisplayName: Quicken
+				Description: Mods.Celestia.Buffs.Quicken.Description
+			}
+
+			Superconduct: {
+				DisplayName: Superconduct
+				Description: Mods.Celestia.Buffs.Superconduct.Description
+			}
+
+			GuobaBuff: {
+				DisplayName: Guoba Buff
+				Description: Mods.Celestia.Buffs.GuobaBuff.Description
+			}
+		}
+
+		Items: {
+			ElementalMasteryAccesory: {
+				DisplayName: Elemental Mastery Accesory
+				Tooltip:
+					```
+				    Increases elemental mastery by 500
+                    Increasese base damage for all weapons by 5
+					```
+			}
+
+			AnemoVision: {
+				DisplayName: Anemo Vision
+				Tooltip:
+					'''
+					Increases [c/00FF00:Anemo] damage by 10%
+					Increases Element Recharge by 30%
+					Imbues your weapons with the power of [c/00FF00:Anemo]
+					'''
+			}
+
+			CryoVision: {
+				DisplayName: Cryo Vision
+				Tooltip:
+					'''
+					Increases [c/00FFFF:Cryo] damage by 10%
+					Increases Element Recharge by 30%
+					Imbues your weapons with the power of [c/00FFFF:Cryo]
+					'''
+			}
+
+			DendroVision: {
+				DisplayName: Dendro Vision
+				Tooltip:
+					'''
+					Increases [c/8B4513:Dendro] damage by 10%
+					Increases Element Recharge by 30%
+					Imbues your weapons with the power of [c/8B4513:Dendro]
+					'''
+			}
+
+			ElectroVision: {
+				DisplayName: Electro Vision
+				Tooltip:
+					'''
+					Increases [c/FF00FF:Electro] damage by 10%
+					Increases Element Recharge by 30%
+					Imbues your weapons with the power of [c/FF00FF:Electro]
+					'''
+			}
+
+			GeoVision: {
+				DisplayName: Geo Vision
+				Tooltip:
+					'''
+					Increases [c/FFA500:Geo] damage by 10%
+					Increases Element Recharge by 30%
+					Imbues your weapons with the power of [c/FFA500:Geo]
+					'''
+			}
+
+			HydroVision: {
+				DisplayName: Hydro Vision
+				Tooltip:
+					'''
+					Increases [c/0000FF:Hydro] damage by 10%
+					Increases Element Recharge by 30%
+					Imbues your weapons with the power of [c/0000FF:Hydro]
+					'''
+			}
+
+			PyroVision: {
+				DisplayName: Pyro Vision
+				Tooltip:
+					'''
+					Increases [c/FF0000:Pyro] damage by 10%
+					Increases Element Recharge by 30%
+					Imbues your weapons with the power of [c/FF0000:Pyro]
+					'''
+			}
+
+			CrystalizeShard: {
+				DisplayName: Crystalize Shard
+				Tooltip: ""
+			}
+
+			EnergyParticle: {
+				DisplayName: Energy Particle
+				Tooltip: ""
+			}
+
+			AnemoSword: {
+				DisplayName: Anemo Sword
+				Tooltip: ""
+			}
+
+			CryoSword: {
+				DisplayName: Cryo Sword
+				Tooltip: ""
+			}
+
+			DendroSword: {
+				DisplayName: Dendro Sword
+				Tooltip: ""
+			}
+
+			ElectroSword: {
+				DisplayName: Electro Sword
+				Tooltip: ""
+			}
+
+			GeoSword: {
+				DisplayName: Geo Sword
+				Tooltip: ""
+			}
+
+			GuobaStaff: {
+				DisplayName: Guoba Staff
+				Tooltip: ""
+			}
+
+			HydroSword: {
+				DisplayName: Hydro Sword
+				Tooltip: ""
+			}
+
+			PyroSword: {
+				DisplayName: Pyro Sword
+				Tooltip: ""
+			}
+
+			QilinBow: {
+				DisplayName: Qilin Bow
+				Tooltip: ""
+			}
+		}
+
+		NPCs: {
+			BloomCore.DisplayName: Bloom Core
+			DendroSlime.DisplayName: Dendro Slime
+		}
+
+		Projectiles: {
+			Guoba.DisplayName: Guoba
+			ElectroChargedProjectile.DisplayName: Electro Charged Projectile
+			LightningBolt.DisplayName: Lightning Bolt
+			QilinBowProjectile.DisplayName: Qilin Bow Projectile
+		}
+	}
+}

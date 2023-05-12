@@ -9,9 +9,7 @@ namespace Celestia.Content.Items.Accessories.Visions
 	{
 		public override void SetStaticDefaults()
 		{
-			Tooltip.SetDefault("Increases Geo damage by 10% \n" +
-								"Increases Element Recharge by 30%\n" +
-								"Imbues your weapons with the power of Geo");
+
 		}
 		public override void SetDefaults()
 		{

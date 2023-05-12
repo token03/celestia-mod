@@ -14,7 +14,7 @@ namespace Celestia.Content.Items.Weapons.GuobaStaff
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Guoba");
+			// DisplayName.SetDefault("Guoba");
 			ProjectileID.Sets.MinionTargettingFeature[Projectile.type] = true;
 
 			Main.projPet[Projectile.type] = true; 
