@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using System;
+using System.IO;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.WorldBuilding;
 
 namespace Celestia.Content.Buffs.Reactions
 {
@@ -39,10 +40,6 @@ namespace Celestia.Content.Buffs.Reactions
 			Crystalize = false;
 			if (!Player.HasBuff(ModContent.BuffType<Crystalize>()))
 				ShieldHealth = 0;
-		}
-		public override void ModifyHurt(ref Player.HurtModifiers modifiers)/* tModPorter Override ImmuneTo, FreeDodge or ConsumableDodge instead to prevent taking damage */
-		{
-
 		}
 
 		public override bool ConsumableDodge(Player.HurtInfo info)

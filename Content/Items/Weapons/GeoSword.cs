@@ -7,11 +7,6 @@ namespace Celestia.Content.Items.Weapons
 {
 	public class GeoSword : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            // Tooltip.SetDefault("This is a basic modded sword.");
-        }
-
         public override void SetDefaults()
         {
             Item.damage = 25;
@@ -28,20 +23,21 @@ namespace Celestia.Content.Items.Weapons
             Item.autoReuse = true;
         }
 
-        public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
-        {
+		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
+		{
             if (!ReactionHelper.geoDetect(target, player, hit.Damage))
             {
                 //dd
             }
         }
 
-        public override void AddRecipes()
-        {
-            Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ItemID.DirtBlock, 10);
-            recipe.AddTile(TileID.WorkBenches);
-            recipe.Register();
-        }
-    }
+		public override void AddRecipes()
+		{
+			Recipe recipe = CreateRecipe();
+			recipe.AddIngredient(ItemID.Blinkroot, 5);
+			recipe.AddIngredient(ItemID.Excalibur, 1);
+			recipe.AddTile(TileID.MythrilAnvil);
+			recipe.Register();
+		}
+	}
 }

@@ -13,11 +13,6 @@ namespace Celestia.Content.Items.Weapons
 	public class ElectroSword : ModItem
     {
 		private int swings;
-        public override void SetStaticDefaults()
-        {
-            // Tooltip.SetDefault("This is a basic modded sword.");
-        }
-		
         public override void SetDefaults()
         {
             Item.damage = 25;
@@ -36,8 +31,8 @@ namespace Celestia.Content.Items.Weapons
 			swings = 0;
         }
 
-        public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
-        {
+		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
+		{
 			swings++;
 			int visionElement = player.GetModPlayer<CelestiaPlayer>().Vision;
 			if (swings > 2 && visionElement != -1)
@@ -70,7 +65,7 @@ namespace Celestia.Content.Items.Weapons
 				Item.channel = true;
 				Item.autoReuse = false;
 				Item.useStyle = ItemUseStyleID.RaiseLamp;
-				Projectile.NewProjectile(Item.GetSource_ItemUse(Item),
+				Projectile.NewProjectile(Item.GetSource_FromThis(),
 									Main.MouseWorld,
 									Vector2.Normalize(player.position - Main.MouseWorld) * 5,
 									ProjectileID.BulletHighVelocity, 100, 5, player.whoAmI); // PROJECTILE GETS FIRED BUT WHY SWING? JUST HOLD OUT SWORD PLEASE!!!
@@ -92,11 +87,12 @@ namespace Celestia.Content.Items.Weapons
 			damage *= 100;
 		}
 		public override void AddRecipes()
-        {
-            Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ItemID.DirtBlock, 10);
-            recipe.AddTile(TileID.WorkBenches);
-            recipe.Register();
-        }
+		{
+			Recipe recipe = CreateRecipe();
+			recipe.AddIngredient(ItemID.Deathweed, 5);
+			recipe.AddIngredient(ItemID.Excalibur, 1);
+			recipe.AddTile(TileID.MythrilAnvil);
+			recipe.Register();
+		}
 	}
 }

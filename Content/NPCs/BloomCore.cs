@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
+using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -57,7 +58,7 @@ namespace Celestia.Content.NPCs
 			return aiTimer != LIFE_SPAN;
 		}
 
-		public override void OnKill()
+		public override bool SpecialOnKill()
 		{
 			Player orginPlayer = NPC.GetGlobalNPC<BloomGlobalNPC>().OrginPlayer;
 			Main.NewText("Owner: " + orginPlayer.name);
@@ -73,6 +74,12 @@ namespace Celestia.Content.NPCs
 				case PYRO_TRIGGER:
 					break;
 			}
+
+			return true;
+		}
+		public override void ModifyNPCLoot(NPCLoot npcLoot)
+		{
+			npcLoot.RemoveWhere((IItemDropRule dropRule) => true, includeGlobalDrops: true);
 		}
 
 		public override void AI()

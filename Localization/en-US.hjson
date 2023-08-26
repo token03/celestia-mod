@@ -76,10 +76,10 @@ Mods: {
 			ElementalMasteryAccesory: {
 				DisplayName: Elemental Mastery Accesory
 				Tooltip:
-					```
-				    Increases elemental mastery by 500
-                    Increasese base damage for all weapons by 5
-					```
+					'''
+					   Increases elemental mastery by 500
+					               Increasese base damage for all weapons by 5
+					'''
 			}
 
 			AnemoVision: {
@@ -218,6 +218,8 @@ Mods: {
 			ElectroChargedProjectile.DisplayName: Electro Charged Projectile
 			LightningBolt.DisplayName: Lightning Bolt
 			QilinBowProjectile.DisplayName: Qilin Bow Projectile
+			HydroSwordProjectile.DisplayName: Hydro Sword Projectile
+			LightningBoltProjectile.DisplayName: Lightning Bolt Projectile
 		}
 	}
 }

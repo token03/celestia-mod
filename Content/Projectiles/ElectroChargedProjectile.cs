@@ -17,8 +17,6 @@ namespace Celestia.Content.Projectiles
 		private ref float aiTracker => ref Projectile.ai[1];
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Guoba");
-
 			ProjectileID.Sets.CultistIsResistantTo[Projectile.type] = true;
 		}
 

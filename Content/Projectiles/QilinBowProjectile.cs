@@ -15,11 +15,6 @@ namespace Celestia.Content.Projectiles
 	{
 		private ref float parent => ref Projectile.ai[1];
 
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Qilin Bow Projectile");
-		}
-
 		public override void SetDefaults()
 		{
 			Projectile.width = 8; // The width of projectile hitbox
