@@ -3,6 +3,7 @@ using Celestia.Content.Buffs.Reactions;
 using Celestia.Helper.InstantReactions;
 using Celestia.Helper.Reactions;
 using Terraria;
+using System;
 using Terraria.ModLoader;
 
 namespace Celestia.Helper
@@ -39,6 +40,7 @@ namespace Celestia.Helper
 					return false;
 			}
 		}
+
         // Each respective detector is called based on elemental application (i.e Applying element calls elementDetect).
         // If another element is detected apply respective reaction to target NPC and remove base element.
         public static bool electroDetect(NPC target, Player player, int damage)
@@ -89,6 +91,7 @@ namespace Celestia.Helper
             }
             return false;
         }
+
         public static bool hydroDetect(NPC target, Player player, int damage)
         {
             if (target.HasBuff<Pyro>())
@@ -280,37 +283,29 @@ namespace Celestia.Helper
             }
             return false;
         }
-        public static bool geoDetect(NPC target, Player player, int damage)
-        {
-            if (target.HasBuff<Pyro>())
-            {
-				// crystalize
-				target.DelBuff(target.FindBuffIndex(ModContent.BuffType<Pyro>()));
-				InstantReactions.Crystalize.applyCrystalize(target, player, damage);
-                return true;
-            }
-            else if (target.HasBuff<Hydro>())
-            {
-				// crystalize
-				target.DelBuff(target.FindBuffIndex(ModContent.BuffType<Hydro>()));
-				InstantReactions.Crystalize.applyCrystalize(target, player, damage);
-				return true;
-            }
-            else if (target.HasBuff<Cryo>())
-            {
-				// crystalize
-				target.DelBuff(target.FindBuffIndex(ModContent.BuffType<Cryo>()));
-				InstantReactions.Crystalize.applyCrystalize(target, player, damage);
-				return true;
-            }
-            else if (target.HasBuff<Dendro>())
-            {
-				// crystalize 
-				target.DelBuff(target.FindBuffIndex(ModContent.BuffType<Dendro>()));
-				InstantReactions.Crystalize.applyCrystalize(target, player, damage);
-				return true;
-            }
-            return false;
-        }
-    }
+		public static bool geoDetect(NPC target, Player player, int damage)
+		{
+			int[] buffsToCheck =
+			{
+				ModContent.BuffType<Pyro>(),
+				ModContent.BuffType<Electro>(),
+				ModContent.BuffType<Hydro>(),
+				ModContent.BuffType<Cryo>(),
+			};
+
+			foreach (var buff in buffsToCheck)
+			{
+				if (target.HasBuff(buff))
+				{
+					target.DelBuff(target.FindBuffIndex(buff));
+					InstantReactions.Crystalize.applyCrystalize(target, player, damage);
+					return true;
+				}
+			}
+
+			return false;
+		}
+
+
+	}
 }

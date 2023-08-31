@@ -6,6 +6,7 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.Utilities;
+using Celestia.Content.Buffs.Elements;
 
 namespace Celestia.Content.NPCs
 {
@@ -61,9 +62,13 @@ namespace Celestia.Content.NPCs
 			return SpawnCondition.OverworldDaySlime.Chance * 0.1f;
 		}
 
-		// Our AI here makes our NPC sit waiting for a player to enter range, jumps to attack, flutter mid-fall to stay afloat a little longer, then falls to the ground. Note that animation should happen in FindFrame
+		#region AI
+
 		public override void AI()
 		{
+			// Elemntal slimes always have the buff of their element
+			NPC.AddBuff(ModContent.BuffType<Dendro>(), 360);
+
 			// The npc starts in the asleep state, waiting for a player to enter range
 			switch (AI_State)
 			{
@@ -197,6 +202,8 @@ namespace Celestia.Content.NPCs
 				AI_Timer = 0;
 			}
 		}
+
+		#endregion
 
 		public override void SendExtraAI(BinaryWriter writer)
 		{

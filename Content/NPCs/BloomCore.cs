@@ -60,6 +60,11 @@ namespace Celestia.Content.NPCs
 
 		public override bool SpecialOnKill()
 		{
+			if (NPC.GetGlobalNPC<BloomGlobalNPC>().OrginPlayer == null)
+			{
+				return false;
+			}
+
 			Player orginPlayer = NPC.GetGlobalNPC<BloomGlobalNPC>().OrginPlayer;
 			Main.NewText("Owner: " + orginPlayer.name);
 

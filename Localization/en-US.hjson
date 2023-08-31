@@ -206,6 +206,11 @@ Mods: {
 				DisplayName: Qilin Bow
 				Tooltip: ""
 			}
+
+			CrystalChunk: {
+				DisplayName: Crystal Chunk
+				Tooltip: ""
+			}
 		}
 
 		NPCs: {
@@ -221,5 +226,8 @@ Mods: {
 			HydroSwordProjectile.DisplayName: Hydro Sword Projectile
 			LightningBoltProjectile.DisplayName: Lightning Bolt Projectile
 		}
+
+		Tiles.CrystalChunk.MapEntry: Crystal Chunk
+		WorldGen.ExampleOrePassMessage: Mods.Celestia.WorldGen.ExampleOrePassMessage
 	}
 }
